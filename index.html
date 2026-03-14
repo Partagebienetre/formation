@@ -610,6 +610,7 @@ body {
   transition: all 0.2s;
 }
 .priority-item.done .priority-checkbox { background: var(--success); border-color: var(--success); color: #fff; }
+.priority-checkbox { color: transparent; }
 .priority-text { flex: 1; font-size: 13px; color: var(--txl); }
 .priority-item.done .priority-text { text-decoration: line-through; color: rgba(160,152,128,0.5); }
 
@@ -687,6 +688,24 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   padding: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
+
+.save-note-btn {
+  margin-top: 8px;
+  padding: 7px 16px;
+  background: linear-gradient(135deg, var(--pd), var(--primary));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.save-note-btn:hover { opacity: 0.9; }
+.save-confirm { color: var(--grn); font-size: 12px; margin-left: 10px; display: none; }
+
 .routine-check {
   width: 18px; height: 18px;
   border: 2px solid var(--border);
@@ -700,7 +719,25 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   cursor: pointer;
   transition: all 0.2s;
 }
-.routine-item.done .routine-check { background: var(--success); border-color: var(--success); color: #fff; }
+.routine-item.done 
+.save-note-btn {
+  margin-top: 8px;
+  padding: 7px 16px;
+  background: linear-gradient(135deg, var(--pd), var(--primary));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.save-note-btn:hover { opacity: 0.9; }
+.save-confirm { color: var(--grn); font-size: 12px; margin-left: 10px; display: none; }
+
+.routine-check { background: var(--success); border-color: var(--success); color: #fff; }
 .routine-item.done .routine-label { text-decoration: line-through; color: rgba(160,152,128,0.4); }
 .routine-label { font-size: 13px; color: var(--txl); }
 
@@ -1196,24 +1233,24 @@ tr:hover td { background: rgba(255,255,255,0.02); }
         </div>
         <div style="font-size:12px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin:20px 0 12px;">Actions hebdomadaires</div>
         <ul class="routine-list" id="routine-hebdo">
-          <li class="routine-item" id="rh1"><div class="routine-check" onclick="toggleRoutine('rh1')">✓</div><span class="routine-label">Travailler sa liste de contacts</span></li>
-          <li class="routine-item" id="rh2"><div class="routine-check" onclick="toggleRoutine('rh2')">✓</div><span class="routine-label">Faire un bilan et remplir son agenda avec des invitations prospect (avec sponsor)</span></li>
-          <li class="routine-item" id="rh3"><div class="routine-check" onclick="toggleRoutine('rh3')">✓</div><span class="routine-label">Faire un suivi des clients</span></li>
-          <li class="routine-item" id="rh4"><div class="routine-check" onclick="toggleRoutine('rh4')">✓</div><span class="routine-label">Demander des recommandations aux clients</span></li>
-          <li class="routine-item" id="rh5"><div class="routine-check" onclick="toggleRoutine('rh5')">✓</div><span class="routine-label">Organiser des ateliers chez les clients</span></li>
-          <li class="routine-item" id="rh6"><div class="routine-check" onclick="toggleRoutine('rh6')">✓</div><span class="routine-label">Faire le suivi de ses partenaires / équipes</span></li>
-          <li class="routine-item" id="rh7"><div class="routine-check" onclick="toggleRoutine('rh7')">✓</div><span class="routine-label">Prospection / réseautage</span></li>
-          <li class="routine-item" id="rh8"><div class="routine-check" onclick="toggleRoutine('rh8')">✓</div><span class="routine-label">Consulter les actualités et campagnes sur le Back Office</span></li>
-          <li class="routine-item" id="rh9"><div class="routine-check" onclick="toggleRoutine('rh9')">✓</div><span class="routine-label">Consulter le portail de formation des Partenaires (Back Office)</span></li>
-          <li class="routine-item" id="rh10"><div class="routine-check" onclick="toggleRoutine('rh10')">✓</div><span class="routine-label">Développement personnel et professionnel → Audios & Bibliothèque</span></li>
-          <li class="routine-item" id="rh11"><div class="routine-check" onclick="toggleRoutine('rh11')">✓</div><span class="routine-label">Administratif et comptabilité</span></li>
-          <li class="routine-item" id="rh12"><div class="routine-check" onclick="toggleRoutine('rh12')">✓</div><span class="routine-label">Bilan : inscriptions clients/partenaires + crédits + rang</span></li>
+          <li class="routine-item" id="rh1"><div class="routine-check" onclick="toggleRoutine('rh1')"></div><span class="routine-label">Travailler sa liste de contacts</span></li>
+          <li class="routine-item" id="rh2"><div class="routine-check" onclick="toggleRoutine('rh2')"></div><span class="routine-label">Faire un bilan et remplir son agenda avec des invitations prospect (avec sponsor)</span></li>
+          <li class="routine-item" id="rh3"><div class="routine-check" onclick="toggleRoutine('rh3')"></div><span class="routine-label">Faire un suivi des clients</span></li>
+          <li class="routine-item" id="rh4"><div class="routine-check" onclick="toggleRoutine('rh4')"></div><span class="routine-label">Demander des recommandations aux clients</span></li>
+          <li class="routine-item" id="rh5"><div class="routine-check" onclick="toggleRoutine('rh5')"></div><span class="routine-label">Organiser des ateliers chez les clients</span></li>
+          <li class="routine-item" id="rh6"><div class="routine-check" onclick="toggleRoutine('rh6')"></div><span class="routine-label">Faire le suivi de ses partenaires / équipes</span></li>
+          <li class="routine-item" id="rh7"><div class="routine-check" onclick="toggleRoutine('rh7')"></div><span class="routine-label">Prospection / réseautage</span></li>
+          <li class="routine-item" id="rh8"><div class="routine-check" onclick="toggleRoutine('rh8')"></div><span class="routine-label">Consulter les actualités et campagnes sur le Back Office</span></li>
+          <li class="routine-item" id="rh9"><div class="routine-check" onclick="toggleRoutine('rh9')"></div><span class="routine-label">Consulter le portail de formation des Partenaires (Back Office)</span></li>
+          <li class="routine-item" id="rh10"><div class="routine-check" onclick="toggleRoutine('rh10')"></div><span class="routine-label">Développement personnel et professionnel → Audios & Bibliothèque</span></li>
+          <li class="routine-item" id="rh11"><div class="routine-check" onclick="toggleRoutine('rh11')"></div><span class="routine-label">Administratif et comptabilité</span></li>
+          <li class="routine-item" id="rh12"><div class="routine-check" onclick="toggleRoutine('rh12')"></div><span class="routine-label">Bilan : inscriptions clients/partenaires + crédits + rang</span></li>
         </ul>
         <div style="font-size:12px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin:24px 0 12px;">Actions mensuelles</div>
         <ul class="routine-list" id="routine-mensuel">
-          <li class="routine-item" id="rm1"><div class="routine-check" onclick="toggleRoutine('rm1')">✓</div><span class="routine-label">Recruter minimum 1 à 2 partenaires / mois</span></li>
-          <li class="routine-item" id="rm2"><div class="routine-check" onclick="toggleRoutine('rm2')">✓</div><span class="routine-label">Faire au moins 4 clients / mois</span></li>
-          <li class="routine-item" id="rm3"><div class="routine-check" onclick="toggleRoutine('rm3')">✓</div><span class="routine-label">Bilan mensuel : inscriptions + crédits individuels et équipe + rang</span></li>
+          <li class="routine-item" id="rm1"><div class="routine-check" onclick="toggleRoutine('rm1')"></div><span class="routine-label">Recruter minimum 1 à 2 partenaires / mois</span></li>
+          <li class="routine-item" id="rm2"><div class="routine-check" onclick="toggleRoutine('rm2')"></div><span class="routine-label">Faire au moins 4 clients / mois</span></li>
+          <li class="routine-item" id="rm3"><div class="routine-check" onclick="toggleRoutine('rm3')"></div><span class="routine-label">Bilan mensuel : inscriptions + crédits individuels et équipe + rang</span></li>
         </ul>
         <div class="divider"></div>
         <div style="font-size:12px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin:0 0 12px;">Événements à ne pas manquer</div>
@@ -1259,7 +1296,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 
 <script>
 // ========== CONFIG ==========
-const PASSWORD = '#Diamant#';
+const PASSWORD = 'Diamant';
 const TOTAL_STEPS = 30;
 
 // ========== MODULES DATA ==========
@@ -1282,7 +1319,7 @@ const modules = [
 <li>S'assurer une meilleure retraite</li>
 <li>Laisser un héritage</li>
 </ul>
-<div class="notes-section"><div class="notes-label">Mes raisons personnelles (notes)</div><textarea class="notes-input" placeholder="Écrivez ici vos raisons personnelles..." onchange="saveNote('m1e1', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Mes raisons personnelles (notes)</div><textarea class="notes-input" placeholder="Écrivez ici vos raisons personnelles..." onchange="saveNote('m1e1', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"placeholder="Écrivezicivosraisonspersonnelles..."onchange="saveNote(m1e1this.value)"></textarea>', <textarea class="notes-input" placeholder="Écrivez ici vos raisons personnelles..." onchange="saveNote('m1e1', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"placeholder="Écrivezicivosraisonspersonnelles..."onchange="saveNote(m1e1this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       },
       {
         id: 'm1e2', title: '1.2 — Mon Pourquoi',
@@ -1297,7 +1334,7 @@ const modules = [
 <li>Qu'est-ce que je vais faire <strong>chaque jour</strong> pour atteindre ce rang ?</li>
 </ul>
 <p><strong>Lisez votre pourquoi chaque matin et chaque soir pour visualiser vos rêves.</strong></p>
-<div class="notes-section"><div class="notes-label">Mon POURQUOI (à rédiger)</div><textarea class="notes-input" style="min-height:120px" placeholder="Mon pourquoi profond est..." onchange="saveNote('m1e2', this.value)"></textarea></div>
+<div class="notes-section"><div class="notes-label">Mon POURQUOI (à rédiger)</div><textarea class="notes-input" style="min-height:120px" placeholder="Mon pourquoi profond est..." onchange="saveNote('m1e2', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"style="min-height:120px"placeholder="Monpourquoiprofondest..."onchange="saveNote(m1e2this.value)"></textarea>', <textarea class="notes-input" style="min-height:120px" placeholder="Mon pourquoi profond est..." onchange="saveNote('m1e2', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"style="min-height:120px"placeholder="Monpourquoiprofondest..."onchange="saveNote(m1e2this.value)"></textarea>">✅ Sauvegardé !</span></div>
 <p style="margin-top:12px"><a href="https://docs.google.com/document/d/117zWsgkIPp8to5ra9cNhW9KvnccB4CjW_SGXvjqgoYQ/edit?usp=sharing" target="_blank">→ Télécharger le document Pourquoi - Objectifs - Planification</a></p>`
       },
       {
@@ -1318,7 +1355,7 @@ const modules = [
 <li><strong>Actions du jour</strong> — ce que vous faites chaque jour</li>
 </ul>
 </div>
-<div class="notes-section"><div class="notes-label">Mes objectifs SMART</div><textarea class="notes-input" style="min-height:120px" placeholder="Objectif annuel : ...&#10;Objectif mensuel : ...&#10;Objectif hebdomadaire : ..." onchange="saveNote('m1e3', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Mes objectifs SMART</div><textarea class="notes-input" style="min-height:120px" placeholder="Objectif annuel : ...&#10;Objectif mensuel : ...&#10;Objectif hebdomadaire : ..." onchange="saveNote('m1e3', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"style="min-height:120px"placeholder="Objectifannuel:...&#10;Objectifmensuel:...&#10;Objectifhebdomadaire:..."onchange="saveNote(m1e3this.value)"></textarea>', <textarea class="notes-input" style="min-height:120px" placeholder="Objectif annuel : ...&#10;Objectif mensuel : ...&#10;Objectif hebdomadaire : ..." onchange="saveNote('m1e3', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"style="min-height:120px"placeholder="Objectifannuel:...&#10;Objectifmensuel:...&#10;Objectifhebdomadaire:..."onchange="saveNote(m1e3this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       },
       {
         id: 'm1e4', title: '1.4 — Ma Planification & Agenda',
@@ -1332,7 +1369,7 @@ const modules = [
 <li><strong>C</strong> — Actions secondaires (à reporter si nécessaire)</li>
 </ul>
 <p>Planifiez votre semaine en bloquant d'abord vos créneaux fixes (travail, famille), puis intégrez vos 3 objectifs Zinzino dans les espaces disponibles.</p>
-<div class="notes-section"><div class="notes-label">Créneaux Zinzino cette semaine</div><textarea class="notes-input" placeholder="Lundi : ...&#10;Mardi : ...&#10;Mercredi : ..." onchange="saveNote('m1e4', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Créneaux Zinzino cette semaine</div><textarea class="notes-input" placeholder="Lundi : ...&#10;Mardi : ...&#10;Mercredi : ..." onchange="saveNote('m1e4', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"placeholder="Lundi:...&#10;Mardi:...&#10;Mercredi:..."onchange="saveNote(m1e4this.value)"></textarea>', <textarea class="notes-input" placeholder="Lundi : ...&#10;Mardi : ...&#10;Mercredi : ..." onchange="saveNote('m1e4', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"placeholder="Lundi:...&#10;Mardi:...&#10;Mercredi:..."onchange="saveNote(m1e4this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       },
       {
         id: 'm1e5', title: '1.5 — Mon Histoire Produit',
@@ -1346,7 +1383,7 @@ const modules = [
 </ul>
 </div>
 <p><a href="https://www.youtube.com/watch?v=GKO3cnJ81cw&list=PLQmEXLPAkxHY6GpxHv6dj0wk9drOF3KJZ&index=6" target="_blank">→ Vidéo Balance Test</a></p>
-<div class="notes-section"><div class="notes-label">Mon témoignage produit (à développer)</div><textarea class="notes-input" style="min-height:100px" placeholder="Avant : ...&#10;Depuis que j'utilise les produits : ...&#10;Ce que j'ai remarqué : ..." onchange="saveNote('m1e5', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Mon témoignage produit (à développer)</div><textarea class="notes-input" style="min-height:100px" placeholder="Avant : ...&#10;Depuis que j'utilise les produits : ...&#10;Ce que j'ai remarqué : ..." onchange="saveNote('m1e5', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"style="min-height:100px"placeholder="Avant:...&#10;Depuisquejutiliselesproduits:...&#10;Cequejairemarqué:..."onchange="saveNote(m1e5this.value)"></textarea>', <textarea class="notes-input" style="min-height:100px" placeholder="Avant : ...&#10;Depuis que j'utilise les produits : ...&#10;Ce que j'ai remarqué : ..." onchange="saveNote('m1e5', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"style="min-height:100px"placeholder="Avant:...&#10;Depuisquejutiliselesproduits:...&#10;Cequejairemarqué:..."onchange="saveNote(m1e5this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       },
       {
         id: 'm1e6', title: '1.6 — Histoire de l\'entreprise Zinzino',
@@ -1465,7 +1502,7 @@ const modules = [
 <li>Chez un client enthousiaste</li>
 </ul>
 </div>
-<div class="notes-section"><div class="notes-label">Mon inauguration</div><textarea class="notes-input" placeholder="Date prévue : ...&#10;Format : présentiel / visio&#10;Personnes invitées : ..." onchange="saveNote('m2e7', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Mon inauguration</div><textarea class="notes-input" placeholder="Date prévue : ...&#10;Format : présentiel / visio&#10;Personnes invitées : ..." onchange="saveNote('m2e7', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"placeholder="Dateprévue:...&#10;Format:présentiel/visio&#10;Personnesinvitées:..."onchange="saveNote(m2e7this.value)"></textarea>', <textarea class="notes-input" placeholder="Date prévue : ...&#10;Format : présentiel / visio&#10;Personnes invitées : ..." onchange="saveNote('m2e7', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"placeholder="Dateprévue:...&#10;Format:présentiel/visio&#10;Personnesinvitées:..."onchange="saveNote(m2e7this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       }
     ]
   },
@@ -1512,7 +1549,7 @@ const modules = [
 <p style="font-style:italic;color:var(--text-muted);line-height:1.7">« Quand penses-tu la voir ? » ... « Donc si je te rappelle [jour] tu l'auras vu, c'est bien ça ? »</p>
 </div>
 </div>
-<div class="notes-section"><div class="notes-label">Vidéo d'invitation Thomas (à compléter)</div><textarea class="notes-input" placeholder="Lien vidéo Thomas : ..." onchange="saveNote('m3e2', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Vidéo d'invitation Thomas (à compléter)</div><textarea class="notes-input" placeholder="Lien vidéo Thomas : ..." onchange="saveNote('m3e2', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"placeholder="LienvidéoThomas:..."onchange="saveNote(m3e2this.value)"></textarea>', <textarea class="notes-input" placeholder="Lien vidéo Thomas : ..." onchange="saveNote('m3e2', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"placeholder="LienvidéoThomas:..."onchange="saveNote(m3e2this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       },
       {
         id: 'm3e3', title: '3.3 — Les 9 Questions Magiques',
@@ -1573,7 +1610,7 @@ const modules = [
 <li><strong>Semaine 3</strong> — Premières présentations produit et business, formation continue</li>
 <li><strong>Semaine 4</strong> — Bilan premier mois, ajustements, fixation des objectifs mois 2</li>
 </ul>
-<div class="notes-section"><div class="notes-label">Notes semaines 2-4</div><textarea class="notes-input" placeholder="Actions semaine 2 : ...&#10;Actions semaine 3 : ...&#10;Bilan semaine 4 : ..." onchange="saveNote('m3e6', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Notes semaines 2-4</div><textarea class="notes-input" placeholder="Actions semaine 2 : ...&#10;Actions semaine 3 : ...&#10;Bilan semaine 4 : ..." onchange="saveNote('m3e6', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"placeholder="Actionssemaine2:...&#10;Actionssemaine3:...&#10;Bilansemaine4:..."onchange="saveNote(m3e6this.value)"></textarea>', <textarea class="notes-input" placeholder="Actions semaine 2 : ...&#10;Actions semaine 3 : ...&#10;Bilan semaine 4 : ..." onchange="saveNote('m3e6', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"placeholder="Actionssemaine2:...&#10;Actionssemaine3:...&#10;Bilansemaine4:..."onchange="saveNote(m3e6this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       },
       {
         id: 'm3e7', title: '3.7 — Routines de Prospection',
@@ -1612,7 +1649,7 @@ const modules = [
 <tr><td>Crédits individuels</td><td></td><td></td></tr>
 <tr><td>Crédits équipe</td><td></td><td></td></tr>
 </table></div>
-<div class="notes-section"><div class="notes-label">Bilan de la semaine</div><textarea class="notes-input" placeholder="Points forts : ...&#10;À améliorer : ...&#10;Objectif semaine prochaine : ..." onchange="saveNote('m3e9', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Bilan de la semaine</div><textarea class="notes-input" placeholder="Points forts : ...&#10;À améliorer : ...&#10;Objectif semaine prochaine : ..." onchange="saveNote('m3e9', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"placeholder="Pointsforts:...&#10;Àaméliorer:...&#10;Objectifsemaineprochaine:..."onchange="saveNote(m3e9this.value)"></textarea>', <textarea class="notes-input" placeholder="Points forts : ...&#10;À améliorer : ...&#10;Objectif semaine prochaine : ..." onchange="saveNote('m3e9', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"placeholder="Pointsforts:...&#10;Àaméliorer:...&#10;Objectifsemaineprochaine:..."onchange="saveNote(m3e9this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       }
     ]
   },
@@ -1714,7 +1751,7 @@ const modules = [
 <span class="resource-arrow">→</span>
 </a>
 </div>
-<div class="notes-section"><div class="notes-label">Fiches produits (à compléter)</div><textarea class="notes-input" placeholder="Liens vers fiches produits officielles..." onchange="saveNote('m4e4', this.value)"></textarea></div>`
+<div class="notes-section"><div class="notes-label">Fiches produits (à compléter)</div><textarea class="notes-input" placeholder="Liens vers fiches produits officielles..." onchange="saveNote('m4e4', this.value)"></textarea><button class="save-note-btn" onclick="saveBtnNote('<textareaclass="notes-input"placeholder="Liensversfichesproduitsofficielles..."onchange="saveNote(m4e4this.value)"></textarea>', <textarea class="notes-input" placeholder="Liens vers fiches produits officielles..." onchange="saveNote('m4e4', this.value)"></textarea>, this.previousElementSibling.value)">💾 Sauvegarder</button><span class="save-confirm" id="conf-<textareaclass="notes-input"placeholder="Liensversfichesproduitsofficielles..."onchange="saveNote(m4e4this.value)"></textarea>">✅ Sauvegardé !</span></div>`
       },
       {
         id: 'm4e5', title: '4.5 — Ma Bibliothèque',
@@ -2023,7 +2060,7 @@ function renderAllEtapes() {
     container.innerHTML = m.etapes.map(e => `
       <div class="etape" id="etape-${e.id}">
         <div class="etape-header" onclick="toggleEtape('${e.id}')">
-          <div class="etape-checkbox" onclick="event.stopPropagation();toggleCheck('${e.id}')" id="check-${e.id}">✓</div>
+          <div class="etape-checkbox" onclick="event.stopPropagation();toggleCheck('${e.id}')" id="check-${e.id}"></div>
           <div class="etape-title">${e.title}</div>
           <div class="etape-toggle" id="toggle-${e.id}">▼</div>
         </div>
@@ -2071,7 +2108,7 @@ function renderChecklist() {
         ${cat.items.map((item, ii) => {
           const id = `cl-${ci}-${ii}`;
           return `<li class="routine-item" id="${id}">
-            <div class="routine-check" onclick="toggleRoutine('${id}')">✓</div>
+            <div class="routine-check" onclick="toggleRoutine('${id}')"></div>
             <span class="routine-label">${item}</span>
           </li>`;
         }).join('')}
@@ -2104,7 +2141,7 @@ function toggleCheck(id) {
   if (!etape) return;
   const isDone = etape.classList.toggle('completed');
   const cb = document.getElementById(`check-${id}`);
-  if (cb) cb.textContent = isDone ? '✓' : '✓';
+  if (cb) cb.textContent = isDone ? '✓' : '';
   state[id] = isDone;
   saveState();
   updateProgress();
@@ -2113,18 +2150,18 @@ function toggleCheck(id) {
 function togglePriority(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.classList.toggle('done');
-  state['p_'+id] = el.classList.contains('done');
+  const isDone = el.classList.toggle('done');
+  state['p_'+id] = isDone;
   saveState();
 }
 
 function toggleRoutine(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.classList.toggle('done');
+  const isDone = el.classList.toggle('done');
   const ch = el.querySelector('.routine-check');
-  if (ch) ch.textContent = '✓';
-  state['r_'+id] = el.classList.contains('done');
+  if (ch) ch.textContent = isDone ? '✓' : '';
+  state['r_'+id] = isDone;
   saveState();
 }
 
@@ -2134,7 +2171,7 @@ function loadCheckboxes() {
     m.etapes.forEach(e => {
       if (state[e.id]) {
         const etape = document.getElementById(`etape-${e.id}`);
-        if (etape) etape.classList.add('completed');
+        if (etape) { etape.classList.add('completed'); const cb = document.getElementById('check-'+e.id); if(cb) cb.textContent='✓'; }
       }
     });
   });
@@ -2150,7 +2187,11 @@ function loadCheckboxes() {
    'rm1','rm2','rm3'].forEach(id => {
     if (state['r_'+id]) {
       const el = document.getElementById(id);
-      if (el) el.classList.add('done');
+      if (el) {
+        el.classList.add('done');
+        const ch = el.querySelector('.routine-check');
+        if (ch) ch.textContent = '✓';
+      }
     }
   });
   // checklist
@@ -2159,7 +2200,11 @@ function loadCheckboxes() {
       const id = `cl-${ci}-${ii}`;
       if (state['r_'+id]) {
         const el = document.getElementById(id);
-        if (el) el.classList.add('done');
+        if (el) {
+          el.classList.add('done');
+          const ch = el.querySelector('.routine-check');
+          if (ch) ch.textContent = '✓';
+        }
       }
     });
   });
@@ -2175,6 +2220,12 @@ function loadNotes() {
   });
 }
 
+
+function saveBtnNote(btnId, noteId, val) {
+  saveNote(noteId, val);
+  const conf = document.getElementById('conf-'+btnId);
+  if (conf) { conf.style.display='inline'; setTimeout(()=>conf.style.display='none', 2000); }
+}
 function saveNote(id, val) {
   state['note_'+id] = val;
   saveState();
@@ -2231,6 +2282,7 @@ function showPage(pageId) {
 const searchIndex = [];
 
 function buildSearchIndex() {
+  searchIndex.length = 0;
   modules.forEach(m => {
     m.etapes.forEach(e => {
       searchIndex.push({
@@ -2253,7 +2305,7 @@ function doSearch(query) {
   const res = document.getElementById('search-results');
   const list = document.getElementById('search-results-list');
   if (!q || q.length < 2) { res.classList.remove('active'); return; }
-  if (searchIndex.length === 0) buildSearchIndex();
+  buildSearchIndex();
   const results = searchIndex.filter(item => item.keywords.includes(q) || item.title.toLowerCase().includes(q)).slice(0, 8);
   if (results.length === 0) {
     list.innerHTML = '<div style="color:var(--text-muted);font-size:13px;padding:8px">Aucun résultat trouvé.</div>';
