@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>1.3 — My Dreams &amp; SMART Goals · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+.smart-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin:1.5rem 0;}
+@media(max-width:700px){.smart-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:380px){.smart-grid{grid-template-columns:1fr;}}
+.smart-card{border-radius:14px;padding:1.1rem .9rem;text-align:center;}
+.smart-card .sc-letter{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;line-height:1;display:block;margin-bottom:.3rem;}
+.smart-card .sc-word{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.5rem;}
+.smart-card .sc-def{font-size:.8rem;line-height:1.45;}
+.sc-s{background:#EDE9FE;color:#4C1D95;}.sc-s .sc-letter{color:#7C3AED;}
+.sc-m{background:#FEF3C7;color:#92400E;}.sc-m .sc-letter{color:#D97706;}
+.sc-a{background:#D1FAE5;color:#065F46;}.sc-a .sc-letter{color:#059669;}
+.sc-r{background:#FEE2E2;color:#991B1B;}.sc-r .sc-letter{color:#DC2626;}
+.sc-t{background:#E0F2FE;color:#0C4A6E;}.sc-t .sc-letter{color:#0284C7;}
+.horizons{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;}
+@media(max-width:650px){.horizons{grid-template-columns:1fr;}}
+.horizon-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.horizon-hdr{padding:.75rem 1rem;font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem;}
+.h-90{background:var(--vm-light);color:var(--vm);}
+.h-1a{background:#FEF3C7;color:#92400E;}
+.h-3a{background:#D1FAE5;color:#065F46;}
+.horizon-body{padding:.9rem 1rem;}
+.horizon-body textarea{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.6rem .8rem;font-family:'Playfair Display',serif;font-size:var(--fs-sm);color:var(--text);background:white;outline:none;resize:none;line-height:1.55;transition:border .2s;}
+.horizon-body textarea:focus{border-color:var(--vm);}
+.horizon-body label{display:block;font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin:.7rem 0 .3rem;}
+.smart-builder{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.6rem;margin:1.5rem 0;box-shadow:var(--shadow);}
+.smart-builder h3{font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--vm);margin-bottom:1.1rem;}
+.sb-row{margin-bottom:.8rem;}
+.sb-row label{font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem;display:block;}
+.sb-row input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.6rem .85rem;font-family:'Playfair Display',serif;font-size:var(--fs-sm);color:var(--text);background:white;outline:none;transition:border .2s;}
+.sb-row input:focus{border-color:var(--vm);}
+.sb-result{background:linear-gradient(135deg,#1E0B40,#3B1F7A);border-radius:12px;padding:1.2rem;margin-top:1rem;display:none;}
+.sb-result p{color:rgba(255,255,255,.9);font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;line-height:1.65;}
+.sb-result .sr-label{color:var(--gold);font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:block;}
+.vboard{background:linear-gradient(135deg,#1E0B40,#3B1F7A);border-radius:18px;padding:2rem;margin:1.5rem 0;}
+.vboard h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--gold);margin-bottom:.5rem;}
+.vboard p{color:rgba(255,255,255,.65);font-size:var(--fs-sm);line-height:1.6;margin-bottom:1.2rem;}
+.vboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;}
+@media(max-width:600px){.vboard-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:380px){.vboard-grid{grid-template-columns:1fr;}}
+.vb-zone{background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.2);border-radius:10px;padding:.8rem;text-align:center;}
+.vb-zone .vbz-emoji{font-size:1.4rem;display:block;margin-bottom:.3rem;}
+.vb-zone .vbz-label{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem;}
+.vb-zone textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:.45rem .6rem;color:#fff;font-family:'Playfair Display',serif;font-size:.8rem;resize:none;outline:none;line-height:1.4;}
+.vb-zone textarea::placeholder{color:rgba(255,255,255,.25);}
+.vb-zone textarea:focus{border-color:var(--gold);}
+</style>
+</head>
+<body>
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+<div id="sb-overlay"></div>
+<div class="layout">
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item " href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item " href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item active" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🌟 Module 1 · Chapter 3</div>
+    <h1>My Dreams &amp;<br><em>SMART Goals</em></h1>
+    <p class="mod-hero-sub">A written dream becomes a project. A dated goal becomes reality. This chapter turns your aspirations into a concrete action plan.</p>
+  </div>
+  <div class="video-wrap">
+    <div class="video-label">🎬 Chapter video</div>
+    <!-- REMPLACER par : <iframe class="video-iframe" src="https://www.youtube.com/embed/XXXXXXXX" allowfullscreen></iframe> -->
+    <div class="video-placeholder"><span class="vp-icon">▶️</span><span class="vp-txt">Video coming soon — replace this block with a YouTube iframe</span></div>
+  </div>
+  <div class="action-bar">
+    <a class="action-btn primary" href="https://docs.google.com/document/d/117zWsgkIPp8to5ra9cNhW9KvnccB4CjW_SGXvjqgoYQ/edit?usp=sharing" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m1-3',this)">✅ Mark as read</button>
+  </div>
+  <div class="slbl">Your dreams — the raw material</div>
+  <div class="quote-block"><p>“If you have a clear vision, you get clear results. But if your visions are blurry, your results will be blurry and confused.”</p><cite>— Oslo Convention 2025</cite></div>
+  <p>Before learning to manage your schedule or to prospect, you need to know exactly <strong>what you are walking towards</strong>. A precise dream produces precise energy.</p>
+  <div class="hl"><strong>Instructions:</strong> Answer without censoring yourself. Nobody but you will read these notes. Let what really comes come, even if it seems impossible today.</div>
+  <div class="vboard">
+    <h3>🌅 My life vision in 3 years</h3>
+    <p>For each area, describe your ideal life precisely. Not “be rich” but “earn €5,000 a month and travel 3 months a year”.</p>
+    <div class="vboard-grid">
+      <div class="vb-zone"><span class="vbz-emoji">💰</span><span class="vbz-label">Finances</span><textarea id="vb-fin" rows="3" placeholder="Income, financial freedom…" oninput="saveVboard()"></textarea></div>
+      <div class="vb-zone"><span class="vbz-emoji">👨‍👩‍👧</span><span class="vbz-label">Family</span><textarea id="vb-fam" rows="3" placeholder="Time, presence, security…" oninput="saveVboard()"></textarea></div>
+      <div class="vb-zone"><span class="vbz-emoji">🏡</span><span class="vbz-label">Living environment</span><textarea id="vb-vie" rows="3" placeholder="Where do you live, how…" oninput="saveVboard()"></textarea></div>
+      <div class="vb-zone"><span class="vbz-emoji">🌍</span><span class="vbz-label">Travel</span><textarea id="vb-voy" rows="3" placeholder="Destinations, pace of life…" oninput="saveVboard()"></textarea></div>
+      <div class="vb-zone"><span class="vbz-emoji">🏥</span><span class="vbz-label">Health</span><textarea id="vb-san" rows="3" placeholder="How do you feel…" oninput="saveVboard()"></textarea></div>
+      <div class="vb-zone"><span class="vbz-emoji">✨</span><span class="vbz-label">Fulfilment</span><textarea id="vb-ep" rows="3" placeholder="Who you become…" oninput="saveVboard()"></textarea></div>
+    </div>
+  </div>
+  <button class="save-btn" onclick="saveVboard()">💾 Save my vision</button>
+  <div class="slbl">The SMART method</div>
+  <div class="smart-grid">
+    <div class="smart-card sc-s"><span class="sc-letter">S</span><span class="sc-word">Specific</span><span class="sc-def">Precise and clearly defined. Not “earn more” but “reach €2,000 in monthly commissions”.</span></div>
+    <div class="smart-card sc-m"><span class="sc-letter">M</span><span class="sc-word">Measurable</span><span class="sc-def">A number, a date, a concrete indicator telling you whether the goal is reached.</span></div>
+    <div class="smart-card sc-a"><span class="sc-letter">A</span><span class="sc-word">Achievable</span><span class="sc-def">Ambitious but realistic. It should stretch you without discouraging you.</span></div>
+    <div class="smart-card sc-r"><span class="sc-letter">R</span><span class="sc-word">Realistic</span><span class="sc-def">Aligned with your current resources, your available time and your life context.</span></div>
+    <div class="smart-card sc-t"><span class="sc-letter">T</span><span class="sc-word">Time-bound</span><span class="sc-def">A precise deadline. “By 31 December” is infinitely better than “soon”.</span></div>
+  </div>
+  <div class="smart-builder">
+    <h3>🛠️ Build your main SMART goal</h3>
+    <div class="sb-row"><label>Specific — What exactly do you want to achieve?</label><input type="text" id="sm-s" placeholder="e.g. reach the Diamond rank with 10 active partners" oninput="buildSmart()"></div>
+    <div class="sb-row"><label>Measurable — How will you know you have reached it?</label><input type="text" id="sm-m" placeholder="e.g. 10 qualified partners, €2,000 in commissions / month" oninput="buildSmart()"></div>
+    <div class="sb-row"><label>Achievable — Why is it within your reach?</label><input type="text" id="sm-a" placeholder="e.g. I dedicate 2 hours a day, I have 80 contacts on my list" oninput="buildSmart()"></div>
+    <div class="sb-row"><label>Realistic — What resources do you have?</label><input type="text" id="sm-r" placeholder="e.g. my sponsor’s support, full training, a dedicated schedule" oninput="buildSmart()"></div>
+    <div class="sb-row"><label>Time-bound — What is your precise deadline?</label><input type="date" id="sm-t" oninput="buildSmart()"></div>
+    <div class="sb-result" id="smart-result"><span class="sr-label">💎 My SMART goal</span><p id="smart-preview"></p></div>
+    <button class="save-btn" onclick="saveSmart()">💾 Save my SMART goal</button>
+  </div>
+  <div class="slbl">My goals by time horizon</div>
+  <div class="horizons">
+    <div class="horizon-card"><div class="horizon-hdr h-90">⚡ 90 days</div><div class="horizon-body"><label>Main goal</label><textarea id="h90-obj" rows="2" placeholder="What I want to achieve…" oninput="saveHorizons()"></textarea><label>Rank / customers / partners</label><textarea id="h90-chif" rows="2" placeholder="e.g. 5 customers, 2 partners" oninput="saveHorizons()"></textarea><label>Target income</label><textarea id="h90-rev" rows="2" placeholder="e.g. €500 / month" oninput="saveHorizons()"></textarea></div></div>
+    <div class="horizon-card"><div class="horizon-hdr h-1a">🎯 1 year</div><div class="horizon-body"><label>Main goal</label><textarea id="h1a-obj" rows="2" placeholder="What I want to achieve…" oninput="saveHorizons()"></textarea><label>Rank / customers / partners</label><textarea id="h1a-chif" rows="2" placeholder="e.g. 20 customers, Gold rank" oninput="saveHorizons()"></textarea><label>Target income</label><textarea id="h1a-rev" rows="2" placeholder="e.g. €1,500 / month" oninput="saveHorizons()"></textarea></div></div>
+    <div class="horizon-card"><div class="horizon-hdr h-3a">💎 3 years</div><div class="horizon-body"><label>Main goal</label><textarea id="h3a-obj" rows="2" placeholder="What I want to achieve…" oninput="saveHorizons()"></textarea><label>Rank / customers / partners</label><textarea id="h3a-chif" rows="2" placeholder="e.g. 100 customers, Diamond" oninput="saveHorizons()"></textarea><label>Target income</label><textarea id="h3a-rev" rows="2" placeholder="e.g. €5,000 / month" oninput="saveHorizons()"></textarea></div></div>
+  </div>
+  <button class="save-btn" onclick="saveHorizons()">💾 Save my goals</button>
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have filled in my life vision in 3 years (the 6 areas)</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have built and saved my main SMART goal</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have set my goals at 90 days, 1 year and 3 years</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have downloaded the document and will read it this week</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I read my goals every morning — they guide my days</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: My Planning &amp; Schedule</li>
+  </ul>
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-1-2.html">← 1.2 My Why</a>
+    <a class="nav-btn nav-btn-next" href="module-1-4.html">1.4 — My Planning →</a>
+  </div>
+</main>
+</div>
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>ddInit('m1-3');
+const VB_KEYS=['fin','fam','vie','voy','san','ep'];
+function saveVboard(){const d={};VB_KEYS.forEach(k=>{const el=document.getElementById('vb-'+k);if(el)d[k]=el.value;});localStorage.setItem('dd_vboard',JSON.stringify(d));}
+function loadVboard(){const s=localStorage.getItem('dd_vboard');if(!s)return;const d=JSON.parse(s);VB_KEYS.forEach(k=>{const el=document.getElementById('vb-'+k);if(el&&d[k])el.value=d[k];});}
+function buildSmart(){const s=document.getElementById('sm-s').value;const m=document.getElementById('sm-m').value;if(!s&&!m)return;const t=document.getElementById('sm-t').value;const date=t?new Date(t).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'to be set';document.getElementById('smart-result').style.display='block';document.getElementById('smart-preview').textContent='I commit to '+(s||'…')+'. I will know I have succeeded when '+(m||'…')+'. My deadline: '+date+'.';}
+function saveSmart(){const d={s:document.getElementById('sm-s').value,m:document.getElementById('sm-m').value,a:document.getElementById('sm-a').value,r:document.getElementById('sm-r').value,t:document.getElementById('sm-t').value};localStorage.setItem('dd_smart',JSON.stringify(d));buildSmart();}
+function loadSmart(){const s=localStorage.getItem('dd_smart');if(!s)return;const d=JSON.parse(s);['s','m','a','r','t'].forEach(k=>{const el=document.getElementById('sm-'+k);if(el&&d[k])el.value=d[k];});buildSmart();}
+const H_KEYS=['h90-obj','h90-chif','h90-rev','h1a-obj','h1a-chif','h1a-rev','h3a-obj','h3a-chif','h3a-rev'];
+function saveHorizons(){const d={};H_KEYS.forEach(k=>{const el=document.getElementById(k);if(el)d[k]=el.value;});localStorage.setItem('dd_horizons',JSON.stringify(d));}
+function loadHorizons(){const s=localStorage.getItem('dd_horizons');if(!s)return;const d=JSON.parse(s);H_KEYS.forEach(k=>{const el=document.getElementById(k);if(el&&d[k])el.value=d[k];});}
+loadVboard();loadSmart();loadHorizons();</script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>3a — The Names List · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+/* Accordion aide-mémoire */
+.acc-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); margin-bottom: .6rem;
+  overflow: hidden; box-shadow: var(--shadow);
+}
+.acc-hdr {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .85rem 1.1rem; cursor: pointer;
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: .88rem; color: var(--text);
+  transition: background .15s; user-select: none;
+}
+.acc-hdr:hover { background: var(--vm-pale); }
+.acc-hdr .acc-icon { font-size: 1.2rem; flex-shrink: 0; }
+.acc-hdr .acc-count {
+  margin-left: auto; background: var(--vm-light); color: var(--vm);
+  font-size: .65rem; font-weight: 800;
+  padding: .15rem .45rem; border-radius: 20px; flex-shrink: 0;
+}
+.acc-hdr .acc-arrow { font-size: .7rem; color: var(--text2); transition: transform .25s; flex-shrink: 0; }
+.acc-hdr.open .acc-arrow { transform: rotate(90deg); }
+.acc-body {
+  display: none; padding: .8rem 1.1rem 1rem;
+  border-top: 1px solid var(--border);
+}
+.acc-body.open { display: block; }
+.tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tag {
+  background: var(--vm-pale); color: var(--vm);
+  font-family: 'DM Sans', sans-serif; font-size: .78rem;
+  font-weight: 500; padding: .3rem .7rem;
+  border-radius: 20px; cursor: default;
+  transition: background .15s;
+}
+.tag:hover { background: var(--vm); color: #fff; }
+
+/* Pipeline */
+.pipe-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(170px,1fr));
+  gap: .7rem; margin: 1.2rem 0;
+}
+.pipe-step {
+  border-radius: 12px; padding: .9rem 1rem; text-align: center;
+}
+.pipe-step .ps-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 900; display: block; margin-bottom: .3rem;
+}
+.pipe-step .ps-label {
+  font-family: 'Syne', sans-serif; font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  display: block; margin-bottom: .4rem;
+}
+.pipe-step .ps-desc { font-family: 'Playfair Display', serif; font-size: var(--fs-xs); line-height: 1.45; }
+.ps1 { background: #FEF3C7; color: #92400E; }
+.ps2 { background: #D1FAE5; color: #065F46; }
+.ps3 { background: #DBEAFE; color: #1E40AF; }
+.ps4 { background: #EDE9FE; color: #4C1D95; }
+.ps5 { background: #FCE7F3; color: #9D174D; }
+.ps6 { background: linear-gradient(135deg,#1E0B40,#3B1F7A); color: var(--gold); }
+.ps6 .ps-desc { color: rgba(255,255,255,.7); }
+
+/* Do / Don't */
+.dodont {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0;
+}
+@media(max-width:550px){ .dodont { grid-template-columns: 1fr; } }
+.do-card, .dont-card {
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.do-hdr { background: #D1FAE5; color: #065F46; padding: .6rem 1rem; font-family: 'Syne', sans-serif; font-weight: 800; font-size: .78rem; }
+.dont-hdr { background: #FEE2E2; color: #991B1B; padding: .6rem 1rem; font-family: 'Syne', sans-serif; font-weight: 800; font-size: .78rem; }
+.dd-body { background: var(--card); padding: .8rem 1rem; display: grid; gap: .4rem; }
+.dd-row { font-family: 'Playfair Display', serif; font-size: var(--fs-sm); color: var(--text2); display: flex; align-items: flex-start; gap: .5rem; }
+.dd-row::before { flex-shrink: 0; }
+.do-card .dd-row::before { content: '✓'; color: #22C55E; font-weight: 700; }
+.dont-card .dd-row::before { content: '✗'; color: #EF4444; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+
+<div id="sb-overlay"></div>
+<div class="layout">
+
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item active" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🎯 Module 3 · Chapter a</div>
+    <h1>The Names<br><em>List</em></h1>
+    <p class="mod-hero-sub">Your list of contacts / names / prospects is your number one asset. It doesn’t lose value, it doesn’t burn, it can’t be stolen. It grows with you.</p>
+  </div>
+
+  <div class="video-wrap">
+    <div class="video-label">🎬 Chapter video</div>
+    <!-- REMPLACER par : <iframe class="video-iframe" src="https://www.youtube.com/embed/XXXXXXXX" allowfullscreen></iframe> -->
+    <div class="video-placeholder"><span class="vp-icon">▶️</span><span class="vp-txt">Video coming soon — replace this block with a YouTube iframe</span></div>
+  </div>
+
+  <div class="action-bar">
+    <!-- REMPLACER href="#" par le lien Google Doc du chapitre -->
+    <a class="action-btn primary" href="#" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m3a',this)">✅ Mark as read</button>
+  </div>
+
+  <!-- L'état d'esprit -->
+  <div class="slbl">The right mindset</div>
+
+  <div class="quote-block">
+    <p>“You are not in the product business. You are in the prospecting business.”</p>
+    <cite>— Michael J. Durkin</cite>
+  </div>
+
+  <p>Before writing down the first name, understand why this list is your most precious tool. It isn’t a list of “victims” to convince — it’s a list of people to whom you will offer something of value, leaving them free to say yes or no.</p>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">🧹</span><div class="cc-title">Clear your mind</div><div class="cc-text">As long as a name stays in your head, it takes up mental space. Once written down, it is safe and frees up room.</div></div>
+    <div class="ccard"><span class="cc-icon">🔗</span><div class="cc-title">The trigger effect</div><div class="cc-text">One name leads to another. Write down Mary → you think of her husband → then of her colleague. The list grows by itself.</div></div>
+    <div class="ccard"><span class="cc-icon">💎</span><div class="cc-title">Your business capital</div><div class="cc-text">This asset doesn’t lose value. Unlike a product stock, it grows richer, gets qualified and is worked on over time.</div></div>
+    <div class="ccard"><span class="cc-icon">🚫</span><div class="cc-title">Never judge on someone else’s behalf</div><div class="cc-text">Your role is to write down, not to decide. The people you thought least interested sometimes become your best partners.</div></div>
+  </div>
+
+  <div class="hl"><strong>The golden rule:</strong> A list of 200 names is better than 10 “perfect” names. Quality comes from quantity. Write everything down, sort afterwards. Minimum goal: <strong>100 contacts / names / prospects</strong> to start.</div>
+
+  <!-- Aide-mémoire accordion -->
+  <div class="slbl">The memory jogger — Don’t leave anyone out</div>
+
+  <p>Go through each category one by one. Don’t filter — write everyone down. Tap each category to expand it.</p>
+
+  <div id="accordion">
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">👨‍👩‍👧</span> Family<span class="acc-count">8</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Father &amp; Mother</span><span class="tag">Father-in-law / Mother-in-law</span><span class="tag">Grandparents</span><span class="tag">Adult children</span><span class="tag">Brothers &amp; Sisters</span><span class="tag">Uncles &amp; Aunts</span><span class="tag">Nieces &amp; Nephews</span><span class="tag">Cousins</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">📋</span> Existing lists<span class="acc-count">7</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Phone contacts</span><span class="tag">Paper address book</span><span class="tag">Email list</span><span class="tag">Wedding list</span><span class="tag">Birthday list</span><span class="tag">Births</span><span class="tag">Business cards</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">⚽</span> Hobbies &amp; Leisure<span class="acc-count">18+</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Association</span><span class="tag">Gym</span><span class="tag">Dance</span><span class="tag">Drawing</span><span class="tag">Music</span><span class="tag">Football</span><span class="tag">Swimming pool</span><span class="tag">Childhood friends</span><span class="tag">Horse riding</span><span class="tag">Karate</span><span class="tag">Video games</span><span class="tag">Cars</span><span class="tag">Motorbikes</span><span class="tag">Tennis</span><span class="tag">Volleyball</span><span class="tag">Bowling</span><span class="tag">Golf</span><span class="tag">Any other sport</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">💼</span> Professional contacts<span class="acc-count">17</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Car dealer</span><span class="tag">Mechanic</span><span class="tag">Banker</span><span class="tag">Accountant</span><span class="tag">Lawyer</span><span class="tag">Babysitter</span><span class="tag">Salesperson</span><span class="tag">Dentist</span><span class="tag">Doctor</span><span class="tag">Petrol station</span><span class="tag">Cleaner</span><span class="tag">Hairdresser</span><span class="tag">Beautician</span><span class="tag">Insurance agent</span><span class="tag">Pharmacist</span><span class="tag">Estate agent</span><span class="tag">Travel agency</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">🔧</span> Everyday services<span class="acc-count">19</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Architect</span><span class="tag">Bus driver</span><span class="tag">Chiropractor</span><span class="tag">Massage therapist</span><span class="tag">Ride-hailing driver</span><span class="tag">Plumber</span><span class="tag">Painter</span><span class="tag">Delivery driver</span><span class="tag">Florist</span><span class="tag">Baker</span><span class="tag">Butcher</span><span class="tag">Pool installer</span><span class="tag">Photographer</span><span class="tag">Concierge</span><span class="tag">Vet</span><span class="tag">Favourite waiter</span><span class="tag">Their partner</span><span class="tag">Their children</span><span class="tag">Their parents</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">🏢</span> Former colleagues &amp; classmates<span class="acc-count">8</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Coaches</span><span class="tag">Former partners</span><span class="tag">Teachers</span><span class="tag">Former neighbours</span><span class="tag">Students</span><span class="tag">Bosses &amp; employers</span><span class="tag">Interns</span><span class="tag">Flatmates</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">🛒</span> Who sold me…<span class="acc-count">10</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">My air conditioning</span><span class="tag">My business cards</span><span class="tag">My car / Motorbike</span><span class="tag">My phone</span><span class="tag">My computer</span><span class="tag">My washing machine</span><span class="tag">My sportswear</span><span class="tag">My TV</span><span class="tag">My sunglasses</span><span class="tag">My books</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">✨</span> I know someone who…<span class="acc-count">30+</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Is looking for a part-time job</span><span class="tag">Is ambitious</span><span class="tag">Is an entrepreneur</span><span class="tag">Has dreams</span><span class="tag">Likes people</span><span class="tag">Is a leader</span><span class="tag">Is organised</span><span class="tag">Is positive</span><span class="tag">Is motivated</span><span class="tag">Is a stay-at-home parent</span><span class="tag">Doesn’t like their job</span><span class="tag">Has been in an MLM</span><span class="tag">Has computer skills</span><span class="tag">Has a loan to pay off</span><span class="tag">Has just graduated</span><span class="tag">Has just had a baby</span><span class="tag">Likes challenges</span><span class="tag">Is retired</span><span class="tag">Wants to work for themselves</span><span class="tag">Wants recognition</span><span class="tag">Is energetic</span><span class="tag">Likes reading</span><span class="tag">Is successful</span><span class="tag">Wants success</span><span class="tag">Works nights</span><span class="tag">Has bought a new car</span><span class="tag">Wants to go on holiday</span><span class="tag">Is single</span><span class="tag">Is married</span><span class="tag">Has teenagers in high school</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">💼</span> Who is…<span class="acc-count">30+</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body"><div class="tag-cloud"><span class="tag">Actor</span><span class="tag">Author / Writer</span><span class="tag">Barber</span><span class="tag">Consultant</span><span class="tag">Sports coach</span><span class="tag">Cook</span><span class="tag">Singer</span><span class="tag">Dancer</span><span class="tag">Designer</span><span class="tag">Network builder</span><span class="tag">In healthcare</span><span class="tag">HR director</span><span class="tag">Director</span><span class="tag">Electrician</span><span class="tag">Manager</span><span class="tag">Musician</span><span class="tag">Nutritionist</span><span class="tag">Landscape gardener</span><span class="tag">Restaurant owner</span><span class="tag">Advertiser</span><span class="tag">Police officer</span><span class="tag">Technician</span><span class="tag">Seller</span><span class="tag">In network marketing</span><span class="tag">In direct sales</span><span class="tag">Small business owner</span><span class="tag">In insurance</span></div></div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-hdr" onclick="toggleAcc(this)"><span class="acc-icon">🌍</span> Geography<span class="acc-count">30+</span><span class="acc-arrow">▶</span></div>
+      <div class="acc-body">
+        <p style="font-size:var(--fs-sm);margin-bottom:.7rem;color:var(--text2)">Think of the people you know in these cities and countries:</p>
+        <div class="tag-cloud"><span class="tag">Paris</span><span class="tag">Lyon</span><span class="tag">Toulouse</span><span class="tag">Nice</span><span class="tag">Cannes</span><span class="tag">Montpellier</span><span class="tag">Grenoble</span><span class="tag">Annecy</span><span class="tag">Lille</span><span class="tag">Metz</span><span class="tag">Rennes</span><span class="tag">Biarritz</span><span class="tag">Monaco</span><span class="tag">Belgium</span><span class="tag">Spain</span><span class="tag">Italy</span><span class="tag">Switzerland</span><span class="tag">Luxembourg</span><span class="tag">Canada</span><span class="tag">United States</span><span class="tag">Germany</span><span class="tag">Netherlands</span><span class="tag">Réunion</span><span class="tag">Martinique</span><span class="tag">Guadeloupe</span><span class="tag">Ivory Coast</span><span class="tag">Australia</span><span class="tag">Thailand</span></div>
+      </div>
+    </div>
+
+  </div><!-- fin accordion -->
+
+  <!-- Pipeline -->
+  <div class="slbl">The pipeline — your contacts’ statuses</div>
+
+  <p>Every contact in your CRM has a status. This pipeline lets you know exactly where each person is and what the next action is.</p>
+
+  <div class="pipe-grid">
+    <div class="pipe-step ps1"><span class="ps-num">1</span><span class="ps-label">🟡 Thought of</span><div class="ps-desc">Written down, not contacted yet</div></div>
+    <div class="pipe-step ps2"><span class="ps-num">2</span><span class="ps-label">🟢 Contact details</span><div class="ps-desc">Found, ready to invite</div></div>
+    <div class="pipe-step ps3"><span class="ps-num">3</span><span class="ps-label">🔵 Invited</span><div class="ps-desc">Invitation sent to an event</div></div>
+    <div class="pipe-step ps4"><span class="ps-num">4</span><span class="ps-label">🟣 Presented</span><div class="ps-desc">Attended a presentation</div></div>
+    <div class="pipe-step ps5"><span class="ps-num">5</span><span class="ps-label">🩷 Thinking it over</span><div class="ps-desc">Interested, decision pending</div></div>
+    <div class="pipe-step ps6"><span class="ps-num">6</span><span class="ps-label">💎 Partner/Customer</span><div class="ps-desc">Has joined or ordered</div></div>
+  </div>
+
+  <!-- Do / Don't -->
+  <div class="slbl">What to do — and what to avoid</div>
+
+  <div class="dodont">
+    <div class="do-card">
+      <div class="do-hdr">✅ Do</div>
+      <div class="dd-body">
+        <div class="dd-row">Write everyone down, without exception</div>
+        <div class="dd-row">Always think of the spouse / partner</div>
+        <div class="dd-row">Update the CRM after every contact</div>
+        <div class="dd-row">Present to the couple when there is one</div>
+        <div class="dd-row">Plan follow-ups in advance</div>
+        <div class="dd-row">Always keep an active list</div>
+      </div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-hdr">🚫 Avoid</div>
+      <div class="dd-body">
+        <div class="dd-row">Deciding on someone else’s behalf</div>
+        <div class="dd-row">Prospecting in fits and starts</div>
+        <div class="dd-row">Presenting the concept over the phone</div>
+        <div class="dd-row">Leaving contacts without a planned follow-up</div>
+        <div class="dd-row">Stopping at 20 or 30 names</div>
+        <div class="dd-row">Excluding someone “because it won’t work for them”</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mbox">
+    <div class="mt">🎯 The daily list routine</div>
+    <div class="mtxt">
+      <strong>Morning</strong> — Identify 3 contacts / names / prospects to work on today.<br>
+      <strong>Daytime</strong> — Make your calls or send your messages (30 minutes minimum).<br>
+      <strong>Evening</strong> — Update the CRM, plan tomorrow’s follow-ups.
+    </div>
+  </div>
+
+  <!-- CRM + Où noter -->
+  <div class="slbl">Where to keep your list?</div>
+
+  <p>The medium doesn’t matter — what matters is getting started. Choose the one that suits you and stick to it. The best tool is the one you actually use every day.</p>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">📊</span><div class="cc-title">Google Sheets — Recommended</div><div class="cc-text">The team CRM is ready to use: pre-set columns, statuses, follow-ups. Go to File → Make a copy.</div></div>
+    <div class="ccard"><span class="cc-icon">📓</span><div class="cc-title">Notebook / Binder</div><div class="cc-text">Simple, always available, no connection needed. Ideal for taking notes on the go. Transfer it to the CRM afterwards.</div></div>
+    <div class="ccard"><span class="cc-icon">🗒️</span><div class="cc-title">Notion</div><div class="cc-text">Very flexible, lets you add notes, statuses, images. Perfect if you like visual organisation and digital tools.</div></div>
+    <div class="ccard"><span class="cc-icon">✅</span><div class="cc-title">Trello</div><div class="cc-text">Pipeline-style column view. Each contact = a card you move from column to column according to its status.</div></div>
+  </div>
+
+  <a href="https://docs.google.com/spreadsheets/d/1XzYxpfin4uanKwNdW0XeBAkvdZzBlpK4GBC56pIB9xQ/edit" target="_blank" style="display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid rgba(22,163,74,.3);border-radius:var(--radius);padding:1.1rem 1.4rem;text-decoration:none;color:var(--text);box-shadow:var(--shadow);margin-bottom:1.5rem;transition:box-shadow .2s;">
+    <span style="font-size:1.8rem">📊</span>
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;color:#166534">Open the team’s Google Sheets CRM</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:var(--fs-xs);color:var(--text2);margin-top:.2rem">Go to File → Make a copy to have your own version</div>
+    </div>
+    <span style="margin-left:auto;font-size:1.2rem;color:#22C55E">↗</span>
+  </a>
+
+  <!-- 9 motivations -->
+  <div class="slbl">The 9 deep reasons for joining network marketing</div>
+
+  <p>When you talk to a contact / name / prospect, look for their deep reason. These 9 motivations cover the vast majority of profiles. Identifying the right one changes everything in your approach.</p>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">💰</span><div class="cc-title">1. Earning extra income</div><div class="cc-text">The most common motivation. A concrete, immediate extra income you can measure every month.</div></div>
+    <div class="ccard"><span class="cc-icon">🏆</span><div class="cc-title">2. Enjoying financial freedom</div><div class="cc-text">No longer depending on a single employer. Having recurring income that works even when you don’t.</div></div>
+    <div class="ccard"><span class="cc-icon">🏢</span><div class="cc-title">3. Owning your own business</div><div class="cc-text">The wish to be an entrepreneur without the risks and constraints of a traditional start-up. Being your own boss.</div></div>
+    <div class="ccard"><span class="cc-icon">⏰</span><div class="cc-title">4. Having more free time</div><div class="cc-text">Choosing your hours, being there for your family, no longer being a slave to an imposed schedule.</div></div>
+    <div class="ccard"><span class="cc-icon">🌱</span><div class="cc-title">5. Speeding up your personal growth</div><div class="cc-text">Learning communication, leadership, team management. A real school of life, free of charge.</div></div>
+    <div class="ccard"><span class="cc-icon">🤝</span><div class="cc-title">6. Helping others</div><div class="cc-text">Sharing products that change people’s health. Supporting partners towards their success.</div></div>
+    <div class="ccard"><span class="cc-icon">👥</span><div class="cc-title">7. Making new contacts</div><div class="cc-text">Building a rich human network, meeting inspiring people, breaking out of social isolation.</div></div>
+    <div class="ccard"><span class="cc-icon">🛡️</span><div class="cc-title">8. Securing a better retirement</div><div class="cc-text">Building, starting now, a passive income that keeps growing even after your working life.</div></div>
+    <div class="ccard"><span class="cc-icon">🌟</span><div class="cc-title">9. Leaving a legacy</div><div class="cc-text">Creating something that lasts, passing on to your children financial freedom and a different way of thinking.</div></div>
+  </div>
+
+  <div class="hl"><strong>How to use these 9 motivations:</strong> In your conversations, ask open questions and listen. When you identify your contact’s deep motivation, adapt your invitation to what they are really looking for — not to what you want to sell them.</div>
+
+  <!-- Recommandations -->
+  <div class="slbl">Asking for referrals</div>
+
+  <div class="quote-block">
+    <p>“A list should never run dry. Every person you meet — whether they join or not — can open the door to 5 other people.”</p>
+    <cite>— Fundamental principle of network marketing</cite>
+  </div>
+
+  <p>Whether the answer is yes or no, always ask for referrals. It is the most powerful technique to grow your list endlessly without ever running out of contacts.</p>
+
+  <div class="mbox">
+    <div class="mt">📋 When to ask for referrals</div>
+    <div class="mtxt">
+      <strong>After a yes</strong> — “Now that you’re in, who around you might also be interested?”<br><br>
+      <strong>After a no</strong> — “I completely understand. Even if it isn’t for you right now, do you know anyone around you looking to earn extra income?”<br><br>
+      <strong>After a presentation</strong> — “Whether you go for it or not, who is the first person who comes to mind when you think about what you’ve just seen?”
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">🔄</span><div class="cc-title">Short referral script</div><div class="cc-text">“Who do you know who is looking to improve their health or earn extra income? Just a first name is enough.”</div></div>
+    <div class="ccard"><span class="cc-icon">🎯</span><div class="cc-title">Targeted referral script</div><div class="cc-text">“Among your contacts, do you know someone dynamic, who likes people and would be open to a new idea?”</div></div>
+    <div class="ccard"><span class="cc-icon">💡</span><div class="cc-title">Script after a refusal</div><div class="cc-text">“No problem at all! By the way, is there anyone in your family or among your friends who might be interested in this kind of concept?”</div></div>
+    <div class="ccard"><span class="cc-icon">📱</span><div class="cc-title">Message script</div><div class="cc-text">“It may not be the right time for you, that’s completely normal. But who around you might be interested?”</div></div>
+  </div>
+
+  <div class="mbox">
+    <div class="mt">🎯 The daily list routine</div>
+    <div class="mtxt">
+      <strong>Morning</strong> — Identify 3 contacts / names / prospects to work on today.<br>
+      <strong>Daytime</strong> — Make your calls or send your messages (30 minutes minimum).<br>
+      <strong>Evening</strong> — Update the CRM, plan tomorrow’s follow-ups.
+    </div>
+  </div>
+
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have gone through all the memory jogger categories</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have written my list of contacts / names / prospects (minimum 100 people)</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have added my partner’s contacts</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have ranked them by priority (my 5 favourites first)</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have opened the Google Sheets CRM and made my personal copy</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have identified the deep motivation of my first 5 contacts</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I know how to ask for referrals after every conversation</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: Edification</li>
+  </ul>
+
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-2.html">← Module 2 — The 33 Mistakes</a>
+    <a class="nav-btn nav-btn-next" href="module-3b.html">3b — Edification →</a>
+  </div>
+
+</main>
+</div>
+
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>
+ddInit('m3a');
+
+function toggleAcc(hdr) {
+  hdr.classList.toggle('open');
+  const body = hdr.nextElementSibling;
+  body.classList.toggle('open');
+}
+</script>
+</body>
+</html>

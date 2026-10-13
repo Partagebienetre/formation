@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>1.1 — My Commitment &amp; My Decision · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+.engage-card{background:linear-gradient(135deg,#1E0B40,#3B1F7A);border-radius:18px;padding:2rem;margin:1.5rem 0;color:#fff;}
+.engage-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);margin-bottom:1rem;}
+.engage-card .eng-text{font-size:var(--fs-base);line-height:1.7;color:rgba(255,255,255,.85);font-style:italic;margin-bottom:1.2rem;}
+.eng-line{border-top:1px dashed rgba(255,255,255,.2);padding-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:500px){.eng-line{grid-template-columns:1fr;}}
+.eng-field label{display:block;font-size:var(--fs-xs);color:rgba(255,255,255,.45);font-family:'Syne',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;}
+.eng-field input{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:.5rem .7rem;color:#fff;font-family:'Playfair Display',serif;font-size:var(--fs-sm);outline:none;transition:border .2s;}
+.eng-field input:focus{border-color:var(--gold);}
+.engage-save{margin-top:1rem;background:linear-gradient(135deg,var(--gold),#E8C56A);border:none;border-radius:8px;padding:.6rem 1.4rem;color:#1E0B40;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:opacity .2s;}
+.engage-save:hover{opacity:.88;}
+</style>
+</head>
+<body>
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+<div id="sb-overlay"></div>
+<div class="layout">
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item active" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item " href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item " href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🌟 Module 1 · Chapter 1</div>
+    <h1>My Commitment<br>&amp; <em>My Decision</em></h1>
+    <p class="mod-hero-sub">Before starting your business, lay the strongest possible foundations — a firm decision and a total commitment to yourself.</p>
+  </div>
+  <div class="video-wrap">
+    <div class="video-label">🎬 Chapter video</div>
+    <!-- REMPLACER par : <iframe class="video-iframe" src="https://www.youtube.com/embed/XXXXXXXX" allowfullscreen></iframe> -->
+    <div class="video-placeholder"><span class="vp-icon">▶️</span><span class="vp-txt">Video coming soon — replace this block with a YouTube iframe</span></div>
+  </div>
+  <div class="action-bar">
+    <!-- REMPLACER href="#" par le lien Google Doc du chapitre -->
+    <a class="action-btn primary" href="https://drive.google.com/file/d/1BSUVUCpYDle01AAXSsQGaobIIPulkijX/view?usp=sharing" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m1-1',this)">✅ Mark as read</button>
+  </div>
+  <div class="slbl">The decisive moment</div>
+  <div class="quote-block"><p>“That decisive moment doesn’t come when you feel confident or comfortable. It comes when you decide. When you decide to go all in, when you decide this is what you want to do.”</p><cite>— A leader’s testimony, Oslo Convention 2025</cite></div>
+  <p>Starting a business doesn’t begin with a technique or a script. It begins with a <strong>decision</strong> — clear, conscious, irrevocable. Not a decision made when everything is perfect, but a decision made now, despite doubts and uncertainty.</p>
+  <div class="hl"><strong>Remember:</strong> Total commitment doesn’t mean the absence of fear. It means fear is no longer in charge. You have decided, and that decision comes before any action.</div>
+  <div class="slbl">The 3 levels of commitment</div>
+  <div class="mbox"><div class="mt">🏃 Level 1 — Hobby mode</div><div class="mtxt">You try, you fumble, you see if it works. Results are random, investment is minimal. This level rarely leads to lasting success.</div></div>
+  <div class="mbox"><div class="mt">💼 Level 2 — Serious mode</div><div class="mtxt">You work regularly, train your partners, track results. Income grows. But part of you still keeps an exit door open.</div></div>
+  <div class="mbox" style="background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(201,168,76,.08));border-color:var(--gold)"><div class="mt" style="color:var(--gold)">💎 Level 3 — All-in mode</div><div class="mtxt"><strong>This is where everything changes.</strong> You no longer ask “if” it will work, but “how” and “when”. Exponential results start here.</div></div>
+  <div class="slbl">My commitment statement</div>
+  <p>Putting your commitment in writing is a powerful act. Fill in your personal statement below — it will be saved in your browser.</p>
+  <div class="engage-card">
+    <h3>✍️ My Personal Statement</h3>
+    <div class="eng-text">“Today I decide to commit fully to this business. I am no longer trying — I have decided. I commit to becoming the best version of myself and to building something great for my family and for the people I will support.”</div>
+    <div class="eng-line">
+      <div class="eng-field"><label>Your first name</label><input type="text" id="eng-name" placeholder="e.g. Sandra" oninput="saveEngage()"></div>
+      <div class="eng-field"><label>Date of your decision</label><input type="date" id="eng-date" oninput="saveEngage()"></div>
+      <div class="eng-field"><label>My chosen level of commitment</label><input type="text" id="eng-level" placeholder="e.g. Level 3 — All-in" oninput="saveEngage()"></div>
+      <div class="eng-field"><label>In 12 months, I want to have…</label><input type="text" id="eng-goal" placeholder="e.g. reached the Diamond rank" oninput="saveEngage()"></div>
+    </div>
+    <button class="engage-save" onclick="saveEngage()">💾 Save my statement</button>
+  </div>
+  <div class="slbl">My first actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have made my decision — I am no longer “trying”</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have filled in and saved my commitment statement</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have identified my level of commitment (1, 2 or 3)</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have shared my decision with my sponsor or someone I trust</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: My Why</li>
+  </ul>
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-home" href="index.html">🏠 Home</a>
+    <a class="nav-btn nav-btn-next" href="module-1-2.html">1.2 — My Why →</a>
+  </div>
+</main>
+</div>
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>ddInit('m1-1');
+function saveEngage(){const d={name:document.getElementById('eng-name').value,date:document.getElementById('eng-date').value,level:document.getElementById('eng-level').value,goal:document.getElementById('eng-goal').value};localStorage.setItem('dd_engagement',JSON.stringify(d));}
+function loadEngage(){const s=localStorage.getItem('dd_engagement');if(!s)return;const d=JSON.parse(s);if(d.name)document.getElementById('eng-name').value=d.name;if(d.date)document.getElementById('eng-date').value=d.date;if(d.level)document.getElementById('eng-level').value=d.level;if(d.goal)document.getElementById('eng-goal').value=d.goal;}
+loadEngage();
+if(!document.getElementById('eng-date').value)document.getElementById('eng-date').value=new Date().toISOString().split('T')[0];</script>
+</body>
+</html>

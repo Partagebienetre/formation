@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>3e — Library &amp; Network Marketing Culture · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+/* Catégories onglets */
+.lib-tabs { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0 1.8rem; }
+.lib-tab { padding:.45rem 1rem; border-radius:20px; border:1.5px solid var(--border); background:var(--card); color:var(--text2); font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700; cursor:pointer; transition:all .18s; }
+.lib-tab:hover,.lib-tab.active { background:var(--vm); color:#fff; border-color:var(--vm); }
+
+/* Grille livres */
+.books-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem; margin-bottom:2rem; }
+.book-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.2rem 1.3rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:.5rem; transition:transform .2s; }
+.book-card:hover { transform:translateY(-2px); }
+.book-cat { font-family:'Syne',sans-serif; font-size:.62rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; padding:.15rem .5rem; border-radius:20px; align-self:flex-start; }
+.bc-systeme { background:var(--vm-light); color:var(--vm); }
+.bc-devpers { background:#D1FAE5; color:#065F46; }
+.bc-sante   { background:#FEF3C7; color:#92400E; }
+.bc-mindset { background:#EDE9FE; color:#4C1D95; }
+.bc-vente   { background:#DBEAFE; color:#1E40AF; }
+.book-title { font-family:'Playfair Display',serif; font-weight:700; font-size:.95rem; color:var(--text); line-height:1.35; }
+.book-author { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700; color:var(--text2); }
+.book-desc { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.55; flex:1; }
+.book-priority { display:flex; gap:.3rem; margin-top:auto; }
+.star { font-size:.75rem; }
+
+/* Vidéos */
+.video-list { display:grid; gap:.8rem; margin-bottom:1.5rem; }
+.video-item { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.2rem; display:flex; align-items:flex-start; gap:1rem; box-shadow:var(--shadow); text-decoration:none; color:var(--text); transition:background .15s; }
+.video-item:hover { background:var(--vm-pale); }
+.vi-icon { width:42px; height:42px; background:linear-gradient(135deg,#DC2626,#EF4444); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.vi-title { font-family:'Syne',sans-serif; font-weight:700; font-size:.88rem; color:var(--text); margin-bottom:.2rem; }
+.vi-desc { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.5; }
+.vi-tag { font-family:'DM Sans',sans-serif; font-size:.62rem; font-weight:700; background:var(--vm-light); color:var(--vm); padding:.12rem .45rem; border-radius:20px; margin-top:.3rem; display:inline-block; }
+
+/* Principes MLM */
+.principe-grid { display:grid; gap:.7rem; margin:1.2rem 0 1.5rem; }
+.principe-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:.9rem 1.1rem; display:grid; grid-template-columns:36px 1fr; gap:.85rem; align-items:start; box-shadow:var(--shadow); }
+.pc-num { width:36px; height:36px; background:linear-gradient(135deg,var(--vm),var(--vm2)); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:800; font-size:.82rem; flex-shrink:0; }
+.pc-content .pc-title { font-family:'Syne',sans-serif; font-weight:700; font-size:.88rem; color:var(--text); margin-bottom:.2rem; }
+.pc-content .pc-text { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.6; }
+
+/* Book hidden */
+.book-card.hidden { display:none; }
+</style>
+</head>
+<body>
+
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+
+<div id="sb-overlay"></div>
+<div class="layout">
+
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item active" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">📚 Module 3 · Chapter e</div>
+    <h1>Library &amp;<br><em>Network Marketing Culture</em></h1>
+    <p class="mod-hero-sub">Leaders read. Great leaders read a lot. Every book you read is a conversation with someone who has already solved the problem you are facing.</p>
+  </div>
+
+  <div class="video-wrap">
+    <div class="video-label">🎬 Chapter video</div>
+    <!-- REMPLACER par : <iframe class="video-iframe" src="https://www.youtube.com/embed/XXXXXXXX" allowfullscreen></iframe> -->
+    <div class="video-placeholder"><span class="vp-icon">▶️</span><span class="vp-txt">Video coming soon — replace this block with a YouTube iframe</span></div>
+  </div>
+
+  <div class="action-bar">
+    <!-- REMPLACER href="#" par le lien Google Doc du chapitre -->
+    <a class="action-btn primary" href="#" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m3e',this)">✅ Mark as read</button>
+  </div>
+
+  <!-- Pourquoi lire -->
+  <div class="slbl">Why reading is a professional activity</div>
+
+  <div class="quote-block">
+    <p>“I spent more than 1,000 hours receiving direct instruction from Jim Rohn — 99% of it through his books and audio programmes. Wherever you are, you can benefit from a mentor’s teaching if they have put their ideas into a book.”</p>
+    <cite>— Darren Hardy, The Compound Effect</cite>
+  </div>
+
+  <p>Training doesn’t stop at what you teach your team. It starts with what you take in yourself. A leader who doesn’t read relies only on their own past experience. A leader who reads has the experience of thousands of people.</p>
+
+  <div class="hl"><strong>The 20-minute rule:</strong> Spend at least 20 minutes a day reading about personal or professional development. Over a year, that’s 12 to 15 books. In 5 years, you’ll have taken in more practical wisdom than most people gather in a lifetime.</div>
+
+  <!-- 5 principes MLM -->
+  <div class="slbl">The 5 fundamental principles of network marketing</div>
+
+  <div class="principe-grid">
+    <div class="principe-card">
+      <div class="pc-num">1</div>
+      <div class="pc-content">
+        <div class="pc-title">You are in the prospecting business</div>
+        <div class="pc-text">Not in the product business. Your job is to create new qualified contacts all the time. Accept it and never forget it.</div>
+      </div>
+    </div>
+    <div class="principe-card">
+      <div class="pc-num">2</div>
+      <div class="pc-content">
+        <div class="pc-title">The system does the work — not you</div>
+        <div class="pc-text">Your role is to bring people in front of the system (presentation, Zoom, tool). The system convinces. You don’t have to explain everything yourself.</div>
+      </div>
+    </div>
+    <div class="principe-card">
+      <div class="pc-num">3</div>
+      <div class="pc-content">
+        <div class="pc-title">Leverage is the key</div>
+        <div class="pc-text">You multiply your impact by training people who do what you do. One tree doesn’t make a forest — a seed that replicates does. That’s the principle of the network.</div>
+      </div>
+    </div>
+    <div class="principe-card">
+      <div class="pc-num">4</div>
+      <div class="pc-content">
+        <div class="pc-title">Consistency beats talent</div>
+        <div class="pc-text">The compound effect of small regular actions always beats sporadic, intense efforts. Three calls a day, 5 days a week, 52 weeks a year = 780 conversations.</div>
+      </div>
+    </div>
+    <div class="principe-card">
+      <div class="pc-num">5</div>
+      <div class="pc-content">
+        <div class="pc-title">You become what you read and listen to</div>
+        <div class="pc-text">Your mental environment shapes your results. Choose your influences deliberately: books, podcasts, the people around you. That choice is the most important one in your business.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bibliothèque -->
+  <div class="slbl">Recommended library</div>
+
+  <div class="lib-tabs">
+    <button class="lib-tab active" onclick="filterLib('all',this)">All</button>
+    <button class="lib-tab" onclick="filterLib('systeme',this)">🔗 Network marketing system</button>
+    <button class="lib-tab" onclick="filterLib('devpers',this)">🌱 Personal development</button>
+    <button class="lib-tab" onclick="filterLib('sante',this)">🏥 Health</button>
+    <button class="lib-tab" onclick="filterLib('vente',this)">💼 Sales &amp; Persuasion</button>
+    <button class="lib-tab" onclick="filterLib('mindset',this)">🧠 Mindset</button>
+  </div>
+
+  <div class="books-grid" id="books-grid">
+
+    <!-- INCONTOURNABLES MLM -->
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">Go Pro — 7 Steps to Becoming a Network Marketing Professional</div>
+      <div class="book-author">Eric Worre</div>
+      <div class="book-desc">The absolute reference. How to invite, present, close and train by following a simple, duplicable system. Read it first.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority</div>
+    </div>
+
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">The 45 Second Presentation That Will Change Your Life</div>
+      <div class="book-author">Don Failla</div>
+      <div class="book-desc">The most widely read book in network marketing worldwide. Simple, short, powerful. Explaining network marketing in 45 seconds — and doing it properly.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority</div>
+    </div>
+
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">The Business of the 21st Century</div>
+      <div class="book-author">Robert T. Kiyosaki</div>
+      <div class="book-desc">Why Kiyosaki recommends network marketing as the best business school. A credible outside view of our industry.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority</div>
+    </div>
+
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">Your First Year in Network Marketing</div>
+      <div class="book-author">Mark Yarnell</div>
+      <div class="book-desc">The survival guide to the first year — the one where most people give up. The traps, the doubts, the solutions. Essential for beginners.</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">Double Your Contacts</div>
+      <div class="book-author">Michael J. Durkin</div>
+      <div class="book-desc">The posture, psychology and techniques to double your rate of qualified contacts. “You are in the prospecting business.”</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">The Secrets of Sponsoring</div>
+      <div class="book-author">Tom "Big Al" Schreiter</div>
+      <div class="book-desc">Simple, effective scripts to sponsor without resistance. Big Al shows that the exact words you use make all the difference.</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">All About Follow-up With Your Prospects</div>
+      <div class="book-author">Tom & Keith Schreiter</div>
+      <div class="book-desc">The fortune is in the follow-up. How to follow up without being pushy, create natural opportunities and turn “maybes” into “yeses”.</div>
+      <div class="book-priority">⭐⭐⭐ Worth reading</div>
+    </div>
+
+    <div class="book-card" data-cat="systeme">
+      <span class="book-cat bc-systeme">🔗 Network marketing system</span>
+      <div class="book-title">Network Marketing 101</div>
+      <div class="book-author">Dr Joe Rubino & John Terhune</div>
+      <div class="book-desc">An overview of the model, the culture and best practices. Ideal for understanding the industry and explaining it to sceptics.</div>
+      <div class="book-priority">⭐⭐⭐ Worth reading</div>
+    </div>
+
+    <!-- DÉVELOPPEMENT PERSONNEL -->
+    <div class="book-card" data-cat="devpers">
+      <span class="book-cat bc-devpers">🌱 Personal development</span>
+      <div class="book-title">The Compound Effect</div>
+      <div class="book-author">Darren Hardy</div>
+      <div class="book-desc">The philosophy behind all lasting success: small daily actions, repeated relentlessly, create extraordinary results. Jim Rohn’s teaching in a modern version.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority</div>
+    </div>
+
+    <div class="book-card" data-cat="devpers">
+      <span class="book-cat bc-devpers">🌱 Personal development</span>
+      <div class="book-title">How to Win Friends and Influence People</div>
+      <div class="book-author">Dale Carnegie</div>
+      <div class="book-desc">The founding book on human relationships. Published in 1936, still unmatched. Every technique it describes applies directly to prospecting and supporting people.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority</div>
+    </div>
+
+    <div class="book-card" data-cat="devpers">
+      <span class="book-cat bc-devpers">🌱 Personal development</span>
+      <div class="book-title">Think and Grow Rich</div>
+      <div class="book-author">Napoleon Hill</div>
+      <div class="book-desc">The result of 20 years studying the richest people in America. 13 principles of success. Burning desire, faith, perseverance — the mental foundations of any result.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority</div>
+    </div>
+
+    <div class="book-card" data-cat="devpers">
+      <span class="book-cat bc-devpers">🌱 Personal development</span>
+      <div class="book-title">The 7 Habits of Highly Effective People</div>
+      <div class="book-author">Stephen R. Covey</div>
+      <div class="book-desc">The 7 habits of highly effective people. A complete life framework that transforms the way you work, communicate and lead.</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <div class="book-card" data-cat="devpers">
+      <span class="book-cat bc-devpers">🌱 Personal development</span>
+      <div class="book-title">See You at the Top</div>
+      <div class="book-author">Zig Ziglar</div>
+      <div class="book-desc">The classic of motivation and ethical selling. Zig Ziglar is one of the mentors Jim Rohn cites. His philosophy: help enough other people get what they want, and you will get everything you want.</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <div class="book-card" data-cat="devpers">
+      <span class="book-cat bc-devpers">🌱 Personal development</span>
+      <div class="book-title">The 5 Levels of Leadership</div>
+      <div class="book-author">John C. Maxwell</div>
+      <div class="book-desc">Understanding the 5 levels: Position → Permission → Production → People Development → Pinnacle. Where are you? How do you progress towards authentic leadership?</div>
+      <div class="book-priority">⭐⭐⭐ Worth reading</div>
+    </div>
+
+    <!-- SANTÉ -->
+    <div class="book-card" data-cat="sante">
+      <span class="book-cat bc-sante">🏥 Health</span>
+      <div class="book-title">The Wellness Revolution</div>
+      <div class="book-author">P. Zane Pilzer</div>
+      <div class="book-desc">Why the wellness industry is the next economic revolution. An economist explains why preventive health is going to explode — and why you are in the right place at the right time.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority for Zinzino</div>
+    </div>
+
+    <div class="book-card" data-cat="sante">
+      <span class="book-cat bc-sante">🏥 Health</span>
+      <div class="book-title">Cellular Health (in French)</div>
+      <div class="book-author">Dr Jean-Louis Vidalo & René Olivier</div>
+      <div class="book-desc">Understanding health at cellular level — the scientific foundation of the test-based nutrition approach. Essential for understanding what you offer.</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <!-- VENTE -->
+    <div class="book-card" data-cat="vente">
+      <span class="book-cat bc-vente">💼 Sales &amp; Persuasion</span>
+      <div class="book-title">Become a Direct Selling Superstar</div>
+      <div class="book-author">Mary Christensen</div>
+      <div class="book-desc">Practical techniques, scripts and strategies specific to direct selling and network marketing. Focused on action and immediate results.</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <div class="book-card" data-cat="vente">
+      <span class="book-cat bc-vente">💼 Sales &amp; Persuasion</span>
+      <div class="book-title">The Greatest Salesman in the World</div>
+      <div class="book-author">Og Mandino</div>
+      <div class="book-desc">A philosophical novel about selling and life. The 10 ancient scrolls contain timeless principles about perseverance, love of the job and consistency.</div>
+      <div class="book-priority">⭐⭐⭐ Worth reading</div>
+    </div>
+
+    <!-- MINDSET -->
+    <div class="book-card" data-cat="mindset">
+      <span class="book-cat bc-mindset">🧠 Mindset</span>
+      <div class="book-title">Rich Dad Poor Dad</div>
+      <div class="book-author">Robert T. Kiyosaki</div>
+      <div class="book-desc">The book that changed the way millions of people think about money. The difference between assets and liabilities, between employee and entrepreneur. Fundamental for understanding residual income.</div>
+      <div class="book-priority">⭐⭐⭐⭐⭐ Top priority</div>
+    </div>
+
+    <div class="book-card" data-cat="mindset">
+      <span class="book-cat bc-mindset">🧠 Mindset</span>
+      <div class="book-title">The Art of Dealing with People</div>
+      <div class="book-author">Leslie Giblin</div>
+      <div class="book-desc">How to influence people positively, build trust and create lasting relationships. The art of human connection applied to everyday business.</div>
+      <div class="book-priority">⭐⭐⭐⭐ Recommended</div>
+    </div>
+
+    <div class="book-card" data-cat="mindset">
+      <span class="book-cat bc-mindset">🧠 Mindset</span>
+      <div class="book-title">You Were Born Rich</div>
+      <div class="book-author">Bob Proctor</div>
+      <div class="book-desc">The law of attraction applied to prosperity. Bob Proctor is one of the great names in personal development worldwide. This book changes your relationship with money and success.</div>
+      <div class="book-priority">⭐⭐⭐ Worth reading</div>
+    </div>
+
+  </div>
+
+  <!-- Vidéos Jim Rohn -->
+  <div class="slbl">Essential videos &amp; audio resources</div>
+
+  <div class="quote-block">
+    <p>“Jim Rohn taught me that success isn’t a matter of luck but of science. You reap what you sow. If you want to succeed, help others succeed.”</p>
+    <cite>— Anthony Robbins, foreword to The Compound Effect</cite>
+  </div>
+
+  <div class="video-list">
+
+    <a class="video-item" href="https://www.youtube.com/results?search_query=Jim+Rohn+français" target="_blank">
+      <div class="vi-icon">▶</div>
+      <div>
+        <div class="vi-title">Jim Rohn — Talks &amp; speeches</div>
+        <div class="vi-desc">The mentor of mentors. His talks on the philosophy of success, personal discipline, reading and building an extraordinary life are timeless.</div>
+        <span class="vi-tag">Search on YouTube: “Jim Rohn”</span>
+      </div>
+    </a>
+
+    <a class="video-item" href="https://www.youtube.com/results?search_query=Eric+Worre+français+marketing+réseau" target="_blank">
+      <div class="vi-icon">▶</div>
+      <div>
+        <div class="vi-title">Eric Worre — Professional network marketing</div>
+        <div class="vi-desc">The author of Go Pro shares techniques for inviting, presenting and training. A very active YouTube channel with regular practical content.</div>
+        <span class="vi-tag">Search on YouTube: “Eric Worre”</span>
+      </div>
+    </a>
+
+    <a class="video-item" href="https://www.youtube.com/results?search_query=Darren+Hardy+compound+effect" target="_blank">
+      <div class="vi-icon">▶</div>
+      <div>
+        <div class="vi-title">Darren Hardy — The Compound Effect &amp; Success Magazine</div>
+        <div class="vi-desc">Interviews and talks by the author of The Compound Effect. Concrete strategies on habits, productivity and consistency in action.</div>
+        <span class="vi-tag">Search on YouTube: “Darren Hardy”</span>
+      </div>
+    </a>
+
+    <a class="video-item" href="https://www.youtube.com/results?search_query=marketing+réseau+MLM+formation+français" target="_blank">
+      <div class="vi-icon">▶</div>
+      <div>
+        <div class="vi-title">Network marketing training in your language</div>
+        <div class="vi-desc">Many leaders share their methods on YouTube. Look for content on inviting, duplication, leadership and network culture.</div>
+        <span class="vi-tag">Search on YouTube: “network marketing training”</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Plan de lecture -->
+  <div class="slbl">My reading plan — 12 months</div>
+
+  <div class="mbox">
+    <div class="mt">📅 Recommended path</div>
+    <div class="mtxt">
+      <strong>Months 1–2</strong> — The 45 Second Presentation + How to Win Friends and Influence People<br>
+      <strong>Months 3–4</strong> — Go Pro + The Compound Effect<br>
+      <strong>Months 5–6</strong> — Rich Dad Poor Dad + The Wellness Revolution<br>
+      <strong>Months 7–8</strong> — Think and Grow Rich + The Business of the 21st Century<br>
+      <strong>Months 9–10</strong> — Your First Year in Network Marketing + Double Your Contacts<br>
+      <strong>Months 11–12</strong> — The 7 Habits + The 5 Levels of Leadership<br><br>
+      <strong>Throughout the year:</strong> 20 min of Jim Rohn on YouTube every week.
+    </div>
+  </div>
+
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have gone through the whole recommended library</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have chosen my next 3 books to read</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have watched at least one Jim Rohn or Eric Worre video this week</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have set up my 20-minute daily reading routine</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I know the 5 fundamental principles of network marketing</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>🎉 Module 3 complete — on to Module 4: Getting Started</li>
+  </ul>
+
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-3d.html">← 3d Objections</a>
+    <a class="nav-btn nav-btn-next" href="module-4a.html">Module 4a — Registration &amp; Status →</a>
+  </div>
+
+</main>
+</div>
+
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>
+ddInit('m3e');
+
+function filterLib(cat, btn) {
+  document.querySelectorAll('.lib-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.book-card').forEach(card => {
+    const cats = card.dataset.cat || '';
+    card.classList.toggle('hidden', cat !== 'all' && !cats.includes(cat));
+  });
+}
+</script>
+</body>
+</html>

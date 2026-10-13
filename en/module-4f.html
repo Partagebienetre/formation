@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>4f — Events · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+/* Zoom cards */
+.zoom-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.2rem; margin:1.5rem 0;
+}
+@media(max-width:700px){ .zoom-grid { grid-template-columns:1fr; } }
+
+.zoom-card {
+  border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow); display:flex; flex-direction:column;
+}
+.zc-hdr {
+  padding:1rem 1.2rem;
+  font-family:'Syne',sans-serif; font-weight:800;
+  display:flex; align-items:center; gap:.6rem;
+}
+.zc-mardi  { background:linear-gradient(135deg,#1E0B40,#3B1F7A); color:var(--gold); }
+.zc-jeudi  { background:linear-gradient(135deg,#065F46,#059669); color:#A7F3D0; }
+.zc-samedi { background:linear-gradient(135deg,#92400E,#D97706); color:#FEF3C7; }
+
+.zc-jour   { font-size:1.1rem; }
+.zc-heure  { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; display:block; margin:.2rem 0; }
+.zc-theme  { font-family:'Playfair Display',serif; font-size:var(--fs-sm); opacity:.85; font-style:italic; }
+
+.zc-body { background:var(--card); border:1px solid var(--border); border-top:none; padding:1rem 1.2rem; flex:1; display:flex; flex-direction:column; gap:.8rem; }
+.zc-animateur { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; }
+.zc-desc { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text); line-height:1.6; flex:1; }
+
+.zc-affiche {
+  width:100%; border-radius:8px; overflow:hidden;
+  border:1px solid var(--border); margin-top:.2rem;
+}
+.zc-affiche iframe {
+  width:100%; height:160px; border:none; display:block;
+}
+.zc-affiche-placeholder {
+  width:100%; height:160px; background:var(--vm-pale);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:var(--fs-xs);
+  font-weight:700; color:var(--vm);
+}
+
+.zoom-btn {
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.75rem 1rem; border-radius:10px;
+  font-family:'Syne',sans-serif; font-weight:800; font-size:.82rem;
+  text-decoration:none; transition:all .18s; margin-top:auto;
+}
+.zb-mardi  { background:var(--vm); color:#fff; }
+.zb-mardi:hover { background:var(--vm2); }
+.zb-jeudi  { background:#059669; color:#fff; }
+.zb-jeudi:hover { background:#065F46; }
+.zb-samedi { background:#D97706; color:#fff; }
+.zb-samedi:hover { background:#92400E; }
+
+/* Barcelone card */
+.bcn-card {
+  background:linear-gradient(135deg,#0A0A0A,#1A1A1A);
+  border-radius:20px; overflow:hidden;
+  box-shadow:0 8px 40px rgba(201,168,76,.25);
+  margin:1.5rem 0;
+  border:1px solid rgba(201,168,76,.3);
+}
+.bcn-top {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:0;
+}
+@media(max-width:600px){ .bcn-top { grid-template-columns:1fr; } }
+.bcn-img { width:100%; height:100%; object-fit:cover; min-height:220px; display:block; }
+.bcn-img-wrap { overflow:hidden; }
+.bcn-info { padding:1.8rem 1.5rem; display:flex; flex-direction:column; gap:1rem; }
+.bcn-title {
+  font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem);
+  font-weight:900; color:var(--gold); line-height:1.2;
+}
+.bcn-sub {
+  font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700;
+  color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:.08em;
+}
+.bcn-detail {
+  font-family:'Playfair Display',serif; font-size:var(--fs-sm);
+  color:rgba(255,255,255,.8); line-height:1.7;
+}
+.bcn-detail strong { color:var(--gold); }
+.bcn-btn {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--gold); color:#1A1A1A;
+  font-family:'Syne',sans-serif; font-weight:800; font-size:.85rem;
+  padding:.8rem 1.4rem; border-radius:10px; text-decoration:none;
+  transition:all .18s; align-self:flex-start;
+}
+.bcn-btn:hover { background:#E8C56A; }
+.bcn-bottom {
+  padding:1.2rem 1.5rem; border-top:1px solid rgba(201,168,76,.2);
+  font-family:'Playfair Display',serif; font-size:var(--fs-sm);
+  color:rgba(255,255,255,.6); text-align:center;
+}
+
+/* Pourquoi les événements */
+.why-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1rem; margin:1.2rem 0;
+}
+.why-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:1.1rem 1.1rem;
+  box-shadow:var(--shadow); text-align:center;
+}
+.why-icon { font-size:1.8rem; display:block; margin-bottom:.5rem; }
+.why-title { font-family:'Syne',sans-serif; font-weight:800; font-size:.82rem; color:var(--vm); margin-bottom:.4rem; }
+.why-text { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.55; }
+
+/* Steps suivi */
+.suivi-steps { display:grid; gap:.7rem; margin:1.2rem 0; }
+.suivi-item { display:grid; grid-template-columns:36px 1fr; gap:.85rem; align-items:start; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:.9rem 1.1rem; box-shadow:var(--shadow); }
+.si-num { width:36px; height:36px; background:linear-gradient(135deg,var(--vm),var(--vm2)); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:800; font-size:.85rem; flex-shrink:0; }
+.si-title { font-family:'Syne',sans-serif; font-weight:700; font-size:.88rem; color:var(--text); margin-bottom:.2rem; }
+.si-text { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+
+<div id="sb-overlay"></div>
+<div class="layout">
+
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item active" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🚀 Module 4 · Chapter f</div>
+    <h1>The<br><em>Events</em></h1>
+    <p class="mod-hero-sub">Events are the glue of your network. They create social proof, strengthen the conviction of those who hesitate and give your prospects the chance to see for themselves.</p>
+  </div>
+
+  <div class="action-bar">
+    <button class="action-btn" onclick="ddMarkDone('m4f',this)">✅ Mark as read</button>
+  </div>
+
+  <!-- Pourquoi -->
+  <div class="slbl">Why events are essential</div>
+
+  <div class="quote-block">
+    <p>“You can present a product online. But you connect hearts when you are with people.”</p>
+    <cite>— Oslo Convention 2025</cite>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card"><span class="why-icon">🎤</span><div class="why-title">Social proof</div><div class="why-text">Seeing other people share their experience is 10 times more powerful than you explaining on your own.</div></div>
+    <div class="why-card"><span class="why-icon">🤝</span><div class="why-title">Human connection</div><div class="why-text">A network is built on relationships. Events create lasting bonds between partners.</div></div>
+    <div class="why-card"><span class="why-icon">📈</span><div class="why-title">Duplication</div><div class="why-text">Your partners see how you invite — they duplicate. The event trains them without anyone teaching.</div></div>
+    <div class="why-card"><span class="why-icon">💡</span><div class="why-title">Conviction</div><div class="why-text">A hesitant prospect who attends a well-run zoom often decides that same evening.</div></div>
+    <div class="why-card"><span class="why-icon">🏆</span><div class="why-title">Recognition</div><div class="why-text">Ranks announced, experiences shared — public recognition is a powerful driver.</div></div>
+    <div class="why-card"><span class="why-icon">📅</span><div class="why-title">Rhythm &amp; consistency</div><div class="why-text">Regular events create a rhythm of activity. Without rhythm, there is no growth.</div></div>
+  </div>
+
+  <!-- Les 3 zooms -->
+  <div class="slbl">The 3 fixed weekly meetings — Block them in now</div>
+
+  <div class="hl"><strong>Golden rule:</strong> Add these three zooms to your calendar as recurring events right away. They are your most important professional meetings of the week — treat them as such.</div>
+
+  <div class="zoom-grid">
+
+    <!-- MARDI -->
+    <div class="zoom-card">
+      <div class="zc-hdr zc-mardi">
+        <div>
+          <div class="zc-jour">📅 Tuesday</div>
+          <div class="zc-heure">8:30 pm (Paris time)</div>
+          <div class="zc-theme">Business Presentation</div>
+        </div>
+      </div>
+      <div class="zc-body">
+        <div class="zc-animateur">🎤 Hosted by Zinzino France leaders</div>
+        <div class="zc-desc">A complete presentation of the Zinzino business concept. Ideal for inviting contacts looking for a complementary activity or a career change.</div>
+        <!-- Affiche Drive -->
+        <div class="zc-affiche">
+          <iframe src="https://drive.google.com/file/d/1TBkolwE0fS_BuXNBHdAX5qGWug36-Sv5/preview" allow="autoplay"></iframe>
+        </div>
+        <a class="zoom-btn zb-mardi" href="https://us06web.zoom.us/j/4038138137?pwd=nJfDKargXYJt1j8qe5637T2Ihwelfy.1&omn=83897575741" target="_blank">🎥 Join the Tuesday zoom →</a>
+      </div>
+    </div>
+
+    <!-- JEUDI -->
+    <div class="zoom-card">
+      <div class="zc-hdr zc-jeudi">
+        <div>
+          <div class="zc-jour">📅 Thursday</div>
+          <div class="zc-heure">8:30 pm (Paris time)</div>
+          <div class="zc-theme">Products &amp; Prevention</div>
+        </div>
+      </div>
+      <div class="zc-body">
+        <div class="zc-animateur">🎤 Hosted by Zinzino France leaders</div>
+        <div class="zc-desc">A presentation of the health protocol, the BalanceTest and the concept of test-based nutrition. Ideal for health-focused prospects.</div>
+        <!-- Affiche Drive -->
+        <div class="zc-affiche">
+          <iframe src="https://drive.google.com/file/d/1zvrOseJRxKk8iN-Lb5uwABiO8kYVkKHf/preview" allow="autoplay"></iframe>
+        </div>
+        <a class="zoom-btn zb-jeudi" href="https://us06web.zoom.us/j/4038138137?pwd=nJfDKargXYJt1j8qe5637T2Ihwelfy.1&omn=83897575741" target="_blank">🎥 Join the Thursday zoom →</a>
+      </div>
+    </div>
+
+    <!-- SAMEDI -->
+    <div class="zoom-card">
+      <div class="zc-hdr zc-samedi">
+        <div>
+          <div class="zc-jour">📅 Saturday</div>
+          <div class="zc-heure">9:30 am (Paris time)</div>
+          <div class="zc-theme">Strategy Meeting</div>
+        </div>
+      </div>
+      <div class="zc-body">
+        <div class="zc-animateur">🎤 Hosted by Danny — our upline</div>
+        <div class="zc-desc">Training and support for partners. Strategies, shared experiences, celebrations. For partners and their newly started team members.</div>
+        <!-- Affiche Drive -->
+        <div class="zc-affiche">
+          <iframe src="https://drive.google.com/file/d/1GIBhAlPDjwVdHU84Q9zBU26-6tpT-8SS/preview" allow="autoplay"></iframe>
+        </div>
+        <a class="zoom-btn zb-samedi" href="https://us06web.zoom.us/j/8659301214" target="_blank">🎥 Join the Saturday zoom →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Comment utiliser les zooms -->
+  <div class="slbl">How to use the zooms for your prospects</div>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">📞</span><div class="cc-title">Invite before the zoom</div><div class="cc-text">Build up the event and the speakers before sending the link. “One of my leaders is giving a very complete presentation on Tuesday evening at 8:30 — they are in high demand.”</div></div>
+    <div class="ccard"><span class="cc-icon">✅</span><div class="cc-title">Get a commitment</div><div class="cc-text">“If I send you the link, will you join on Tuesday at 8:30?” — a concrete verbal commitment is worth far more than an “I’ll see”.</div></div>
+    <div class="ccard"><span class="cc-icon">🔄</span><div class="cc-title">Confirm the day before</div><div class="cc-text">A quick message the day before the zoom greatly increases attendance. “Reminder for tomorrow evening at 8:30 — see you then!”</div></div>
+    <div class="ccard"><span class="cc-icon">🤫</span><div class="cc-title">Stay in the room</div><div class="cc-text">During the zoom, stay quiet. Your part is done. Let the speaker present. Take notes and prepare your follow-up.</div></div>
+    <div class="ccard"><span class="cc-icon">💬</span><div class="cc-title">Follow up within 24h</div><div class="cc-text">“What did you think of the presentation?” — Following up within 24 hours of the zoom is crucial. That is where the decision is made.</div></div>
+    <div class="ccard"><span class="cc-icon">🔁</span><div class="cc-title">Get your team into the habit</div><div class="cc-text">Invite your partners to these zooms as soon as they start. They see how it is done and duplicate naturally. It is training by example.</div></div>
+  </div>
+
+  <!-- Barcelone -->
+  <div class="slbl">🌟 Exceptional Event — Barcelona 2026</div>
+
+  <div class="bcn-card">
+    <div class="bcn-top">
+      <div class="bcn-img-wrap">
+        <img class="bcn-img"
+          src="https://drive.google.com/thumbnail?id=1gNGwo6nu2XLGHfKsSy0D6vQ4ISWpsLgG&sz=w800"
+          alt="Barcelona 2026 — Hilde Rismyhr Saele"
+          onerror="this.style.display='none'">
+      </div>
+      <div class="bcn-info">
+        <div>
+          <div class="bcn-sub">Zinzino French-speaking team · Exceptional Event</div>
+          <div class="bcn-title">Barcelona<br>2026</div>
+        </div>
+        <div class="bcn-detail">
+          <strong>📅 30 &amp; 31 May 2026</strong><br>
+          1:00 pm – 7:00 pm · 9:00 am – 12:00 pm<br><br>
+          <strong>📍 InterContinental Barcelona</strong><br>
+          Avenida Rius Y Taulet, 1-3 · Barcelona, 08004<br><br>
+          With the exclusive presence of <strong>Hilde Rismyhr Saele</strong> — co-founder of Zinzino, world’s No. 1 partner, 7 Star Global President.<br><br>
+          Spanish translation is available.
+        </div>
+        <a class="bcn-btn" href="https://my.weezevent.com/evenement-zinzino-barcelone-2026" target="_blank">
+          🎟️ Register for the event →
+        </a>
+      </div>
+    </div>
+    <div class="bcn-bottom">
+      ✨ This is the event of the year for our French-speaking team — book your places now.
+    </div>
+  </div>
+
+  <!-- Comment préparer Barcelone -->
+  <div class="slbl">How to prepare your team for Barcelona</div>
+
+  <div class="suivi-steps">
+    <div class="suivi-item">
+      <div class="si-num">1</div>
+      <div class="si-content">
+        <div class="si-title">Decide and register yourself first</div>
+        <div class="si-text">Your personal commitment is the best invitation for your team. Book your place before talking about it to your partners.</div>
+      </div>
+    </div>
+    <div class="suivi-item">
+      <div class="si-num">2</div>
+      <div class="si-content">
+        <div class="si-title">Build up the event and Hilde before inviting</div>
+        <div class="si-text">“Hilde is the co-founder of Zinzino, the world’s No. 1 partner. Having the chance to hear her live is exceptional — it doesn’t happen every year.” Create rarity and value before giving the link.</div>
+      </div>
+    </div>
+    <div class="suivi-item">
+      <div class="si-num">3</div>
+      <div class="si-content">
+        <div class="si-title">Invite your best prospects</div>
+        <div class="si-text">An event of this scale can convince prospects who have been hesitating for a long time. “I don’t know if it’s the right time for you, but there is an exceptional event at the end of May in Barcelona with the co-founder — it’s worth the trip.”</div>
+      </div>
+    </div>
+    <div class="suivi-item">
+      <div class="si-num">4</div>
+      <div class="si-content">
+        <div class="si-title">Make it a team project</div>
+        <div class="si-text">Organise the trip together — car sharing, hotel, dinner together. Travelling strengthens bonds and creates memories that solidify partners’ commitment.</div>
+      </div>
+    </div>
+    <div class="suivi-item" style="border:2px solid var(--gold)">
+      <div class="si-num" style="background:linear-gradient(135deg,var(--gold),#E8C56A);color:#1E0B40;">5</div>
+      <div class="si-content">
+        <div class="si-title">💎 Build on the post-event momentum</div>
+        <div class="si-text">The 48 to 72 hours after a big event are the most powerful of the year. Everyone is inspired, convinced, enthusiastic. It is the ideal time to reconnect with all your lukewarm contacts and send your new invitations.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Après un événement -->
+  <div class="slbl">Following up after each event — zoom or in person</div>
+
+  <div class="mbox">
+    <div class="mt">🔄 The 24-hour rule — The follow-up that makes the difference</div>
+    <div class="mtxt">
+      <strong>During the event</strong> — Note the names of the prospects attending. Watch their reactions. Prepare your follow-up message.<br><br>
+      <strong>Within 24h</strong> — Contact each prospect who attended: “What did you think of this evening?” Let them speak. Listen before talking.<br><br>
+      <strong>If interested</strong> — Set the next meeting immediately. Don’t let the momentum drop. “When shall we meet to talk about it?”<br><br>
+      <strong>If hesitant</strong> — Invite them to the next zoom. “The next presentation is on Tuesday — shall we watch it together?”<br><br>
+      <strong>If absent</strong> — Send a gentle message: “We missed you this evening! It was great. The next one is on Tuesday — will you be there?”
+    </div>
+  </div>
+
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I blocked the 3 weekly zooms in my calendar as recurring events</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I saved the 3 Zoom links in my bookmarks or contacts</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I attended my first zoom on Tuesday or Thursday evening</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I invited at least one contact / prospect to one of the zooms this week</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I looked at the registration link for Barcelona 2026</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: My Tools &amp; Resources</li>
+  </ul>
+
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-4e.html">← 4e Launch</a>
+    <a class="nav-btn nav-btn-next" href="module-4bis.html">4★ — My Tools &amp; Resources →</a>
+  </div>
+
+</main>
+</div>
+
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>ddInit('m4f');</script>
+</body>
+</html>

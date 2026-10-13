@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>1.2 — My Why · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+.cinq-pourquoi{display:grid;gap:.8rem;margin:1.2rem 0 1.5rem;}
+.pq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:start;box-shadow:var(--shadow);}
+.pq-num{width:32px;height:32px;background:var(--vm);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;flex-shrink:0;margin-top:.2rem;}
+.pq-content label{display:block;font-family:'Syne',sans-serif;font-size:var(--fs-xs);font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;}
+.pq-content input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.55rem .8rem;font-family:'Playfair Display',serif;font-size:var(--fs-sm);color:var(--text);background:white;outline:none;transition:border .2s;}
+.pq-content input:focus{border-color:var(--vm);}
+.pq-arrow{text-align:center;color:var(--vm);font-size:1.3rem;margin:.2rem 0;}
+.dom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-bottom:1.5rem;}
+.dom-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.2rem;box-shadow:var(--shadow);}
+.dom-card .dc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:.6rem;color:var(--text);display:flex;align-items:center;gap:.4rem;}
+.dom-card textarea{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.55rem .7rem;font-family:'Playfair Display',serif;font-size:var(--fs-sm);color:var(--text);background:white;outline:none;resize:none;transition:border .2s;line-height:1.5;}
+.dom-card textarea:focus{border-color:var(--vm);}
+@media(max-width:500px){.dom-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+<div id="sb-overlay"></div>
+<div class="layout">
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item " href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item active" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item " href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🌟 Module 1 · Chapter 2</div>
+    <h1>My <em>Why</em></h1>
+    <p class="mod-hero-sub">When the Why is strong, the How becomes easy. Before learning techniques, find your inner fuel.</p>
+  </div>
+  <div class="video-wrap">
+    <div class="video-label">🎬 Chapter video</div>
+    <!-- REMPLACER par : <iframe class="video-iframe" src="https://www.youtube.com/embed/XXXXXXXX" allowfullscreen></iframe> -->
+    <div class="video-placeholder"><span class="vp-icon">▶️</span><span class="vp-txt">Video coming soon — replace this block with a YouTube iframe</span></div>
+  </div>
+  <div class="action-bar">
+    <!-- REMPLACER href="#" par le lien Google Doc du chapitre -->
+    <a class="action-btn primary" href="#" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m1-2',this)">✅ Mark as read</button>
+  </div>
+  <div class="slbl">Why the Why?</div>
+  <div class="quote-block"><p>“When the Why is strong, the How becomes easy.”</p><cite>— Oslo Convention 2025</cite></div>
+  <p>Prospecting techniques, invitation scripts — all of that can be learned. But without a deep reason to keep going when things get hard, the best techniques in the world won’t help. Your <strong>Why</strong> is the engine. Everything else is just fuel.</p>
+  <div class="hl"><strong>A leader’s testimony:</strong> “Without a mission… where are we going?” The path gets blurry and it’s easy to lose your way when you no longer know why you’re moving forward.</div>
+  <div class="slbl">The 5 Whys technique</div>
+  <p>Ask yourself the question five times in a row. The 5th answer is almost always the real one.</p>
+  <div class="mbox"><div class="mt">📖 How it works</div><div class="mtxt">Start with: <em>“Why am I doing this business?”</em> — then take each answer and ask: <em>“And why does that matter to me?”</em> Repeat five times.</div></div>
+  <div class="cinq-pourquoi">
+    <div class="pq-item"><div class="pq-num">1</div><div class="pq-content"><label>Why am I doing this business?</label><input type="text" id="pq1" placeholder="My first answer…" oninput="savePq()"></div></div>
+    <div class="pq-arrow">↓</div>
+    <div class="pq-item"><div class="pq-num">2</div><div class="pq-content"><label>And why does that matter to me?</label><input type="text" id="pq2" placeholder="Digging a little deeper…" oninput="savePq()"></div></div>
+    <div class="pq-arrow">↓</div>
+    <div class="pq-item"><div class="pq-num">3</div><div class="pq-content"><label>And behind that, what really matters?</label><input type="text" id="pq3" placeholder="The real reason starts to appear…" oninput="savePq()"></div></div>
+    <div class="pq-arrow">↓</div>
+    <div class="pq-item"><div class="pq-num">4</div><div class="pq-content"><label>If I didn’t succeed, what would I lose?</label><input type="text" id="pq4" placeholder="Tension creates necessity…" oninput="savePq()"></div></div>
+    <div class="pq-arrow">↓</div>
+    <div class="pq-item" style="border:2px solid var(--gold)"><div class="pq-num" style="background:var(--gold);color:#1E0B40">5</div><div class="pq-content"><label>💎 My deep Why — the one that doesn’t change</label><input type="text" id="pq5" placeholder="That’s your real engine…" oninput="savePq()"></div></div>
+  </div>
+  <button class="save-btn" onclick="savePq()">💾 Save my 5 Whys</button>
+  <div class="slbl">The areas of my life</div>
+  <div class="dom-grid">
+    <div class="dom-card"><div class="dc-title">💰 Finances &amp; Freedom</div><textarea id="dom-fin" rows="3" placeholder="What I want to achieve financially…" oninput="saveDom()"></textarea></div>
+    <div class="dom-card"><div class="dc-title">👨‍👩‍👧 Family &amp; Loved ones</div><textarea id="dom-fam" rows="3" placeholder="What I want to give the people I love…" oninput="saveDom()"></textarea></div>
+    <div class="dom-card"><div class="dc-title">🏥 Health &amp; Energy</div><textarea id="dom-san" rows="3" placeholder="How I want to feel physically…" oninput="saveDom()"></textarea></div>
+    <div class="dom-card"><div class="dc-title">🌍 Freedom &amp; Time</div><textarea id="dom-lib" rows="3" placeholder="What freedom means to me…" oninput="saveDom()"></textarea></div>
+    <div class="dom-card"><div class="dc-title">🌱 Impact &amp; Meaning</div><textarea id="dom-imp" rows="3" placeholder="What I want to bring to others…" oninput="saveDom()"></textarea></div>
+    <div class="dom-card"><div class="dc-title">✨ Personal growth</div><textarea id="dom-grow" rows="3" placeholder="Who I want to become on this journey…" oninput="saveDom()"></textarea></div>
+  </div>
+  <button class="save-btn" onclick="saveDom()">💾 Save my vision</button>
+  <div class="quote-block"><p>“A parent would be ready to fight two lions for their children. Recruiting two people is a much simpler task. When your Why is strong, obstacles become tiny.”</p><cite>— Oslo Convention 2025</cite></div>
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have completed my 5 Whys and saved my answers</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have filled in the 6 areas of life</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have identified my deep Why (answer no. 5)</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I read my Why every morning for 7 days</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: My Dreams &amp; Goals</li>
+  </ul>
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-1-1.html">← 1.1 My Commitment</a>
+    <a class="nav-btn nav-btn-next" href="module-1-3.html">1.3 — My Dreams &amp; Goals →</a>
+  </div>
+</main>
+</div>
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>ddInit('m1-2');
+function savePq(){const d={};['pq1','pq2','pq3','pq4','pq5'].forEach(k=>{d[k]=document.getElementById(k).value;});localStorage.setItem('dd_pourquoi',JSON.stringify(d));}
+function loadPq(){const s=localStorage.getItem('dd_pourquoi');if(!s)return;const d=JSON.parse(s);['pq1','pq2','pq3','pq4','pq5'].forEach(k=>{if(d[k])document.getElementById(k).value=d[k];});}
+function saveDom(){const d={fin:document.getElementById('dom-fin').value,fam:document.getElementById('dom-fam').value,san:document.getElementById('dom-san').value,lib:document.getElementById('dom-lib').value,imp:document.getElementById('dom-imp').value,grow:document.getElementById('dom-grow').value};localStorage.setItem('dd_domaines',JSON.stringify(d));}
+function loadDom(){const s=localStorage.getItem('dd_domaines');if(!s)return;const d=JSON.parse(s);Object.entries(d).forEach(([k,v])=>{const el=document.getElementById('dom-'+k);if(el&&v)el.value=v;});}
+loadPq();loadDom();</script>
+</body>
+</html>

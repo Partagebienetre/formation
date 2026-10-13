@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>1.4 — My Planning &amp; Schedule · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+/* ── STYLES SPÉCIFIQUES 1.4 ── */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .5rem;
+  margin: 1.5rem 0;
+}
+@media(max-width:700px){ .week-grid { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:400px){ .week-grid { grid-template-columns: repeat(2,1fr); } }
+
+.day-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.day-card .dc-hdr {
+  background: var(--vm-light);
+  color: var(--vm);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: .45rem .5rem;
+  text-align: center;
+}
+.day-card.we .dc-hdr { background: var(--gold-lt); color: #92400E; }
+.day-card textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: .5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: .78rem;
+  color: var(--text);
+  background: white;
+  resize: none;
+  line-height: 1.4;
+  min-height: 80px;
+}
+
+.routine-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+.rb-hdr {
+  padding: .7rem 1rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: .82rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.rb-matin  { background: linear-gradient(90deg,#FEF3C7,#FDF8EC); color: #92400E; }
+.rb-jour   { background: linear-gradient(90deg,var(--vm-light),var(--vm-pale)); color: var(--vm2); }
+.rb-soir   { background: linear-gradient(90deg,#1E0B40,#3B1F7A); color: var(--gold); }
+.rb-body { padding: .85rem 1rem; display: grid; gap: .6rem; }
+.rb-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: .6rem;
+  align-items: center;
+}
+@media(max-width:480px){ .rb-row { grid-template-columns: 1fr; } }
+.rb-time {
+  font-family: 'Syne', sans-serif;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text2);
+}
+.rb-input {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  padding: .45rem .7rem;
+  font-family: 'Playfair Display', serif;
+  font-size: var(--fs-sm);
+  color: var(--text);
+  background: white;
+  outline: none;
+  transition: border .2s;
+}
+.rb-input:focus { border-color: var(--vm); }
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 1.5rem;
+}
+.kpi-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.kpi-card .kc-icon { font-size: 1.5rem; display: block; margin-bottom: .4rem; }
+.kpi-card .kc-label {
+  font-family: 'Syne', sans-serif;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .4rem;
+  display: block;
+}
+.kpi-card input {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  padding: .4rem .6rem;
+  font-family: 'Playfair Display', serif;
+  font-size: .9rem;
+  color: var(--vm);
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: border .2s;
+}
+.kpi-card input:focus { border-color: var(--vm); }
+
+.loco-card {
+  background: linear-gradient(135deg, #1E0B40, #3B1F7A);
+  border-radius: 18px;
+  padding: 1.8rem;
+  margin: 1.5rem 0;
+  color: #fff;
+}
+.loco-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+  margin-bottom: .6rem;
+}
+.loco-card p {
+  color: rgba(255,255,255,.75);
+  line-height: 1.7;
+  font-size: var(--fs-base);
+  margin-bottom: 0;
+}
+</style>
+</head>
+<body>
+
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+
+<div id="sb-overlay"></div>
+<div class="layout">
+
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item active" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🌟 Module 1 · Chapter 4</div>
+    <h1>My Planning<br>&amp; <em>My Schedule</em></h1>
+    <p class="mod-hero-sub">What isn’t planned doesn’t exist. Your schedule is your freedom tool — it turns your goals into concrete actions every week.</p>
+  </div>
+
+  <div class="video-wrap">
+    <div class="video-label">🎬 Chapter video</div>
+    <!-- REMPLACER par : <iframe class="video-iframe" src="https://www.youtube.com/embed/XXXXXXXX" allowfullscreen></iframe> -->
+    <div class="video-placeholder"><span class="vp-icon">▶️</span><span class="vp-txt">Video coming soon — replace this block with a YouTube iframe</span></div>
+  </div>
+
+  <div class="action-bar">
+    <!-- REMPLACER href="#" par le lien Google Doc du chapitre -->
+    <a class="action-btn primary" href="https://docs.google.com/document/d/117zWsgkIPp8to5ra9cNhW9KvnccB4CjW_SGXvjqgoYQ/edit?usp=sharing" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m1-4',this)">✅ Mark as read</button>
+  </div>
+
+  <div class="slbl">Why plan?</div>
+
+  <div class="quote-block">
+    <p>“If you want to be free, you have to present a concept every day, every single day.”</p>
+    <cite>— Oslo Convention 2025</cite>
+  </div>
+
+  <p>Partnering adapts to your life — you set your working time and your goals. But that freedom has a price: <strong>without a schedule, good intentions disappear</strong>. The book, the friend who calls, the children, tiredness — everything conspires against your evening calls if you haven’t blocked that time in advance.</p>
+
+  <div class="hl"><strong>The golden rule:</strong> What goes into the schedule exists. What isn’t there will always be pushed aside by the urgency of the moment.</div>
+
+  <div class="slbl">The team’s fixed meetings to block right now</div>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">📅</span><div class="cc-title">Tuesday evening</div><div class="cc-text">France presentation Zoom — business opportunity. Add it as a recurring event in your calendar.</div></div>
+    <div class="ccard"><span class="cc-icon">📅</span><div class="cc-title">Thursday evening</div><div class="cc-text">France presentation Zoom — health and balance protocol. Ideal for inviting your prospects.</div></div>
+    <div class="ccard"><span class="cc-icon">📅</span><div class="cc-title">Saturday morning</div><div class="cc-text">Getting Started Strategy meeting. Training and support for new partners.</div></div>
+    <div class="ccard"><span class="cc-icon">📅</span><div class="cc-title">Diamond team Zooms</div><div class="cc-text">Ask your sponsor for them. These meetings are the glue of your team.</div></div>
+  </div>
+
+  <div class="slbl">My typical week — interactive planner</div>
+
+  <p>Fill in the time slots dedicated to your business for each day of the week. These blocks are commitments to yourself — treat them like professional appointments.</p>
+
+  <div class="week-grid">
+    <div class="day-card"><div class="dc-hdr">Monday</div><textarea id="w-lun" placeholder="Business slot… e.g. 8–10 pm calls" oninput="saveWeek()"></textarea></div>
+    <div class="day-card"><div class="dc-hdr">Tuesday</div><textarea id="w-mar" placeholder="France presentation Zoom 8:30 pm" oninput="saveWeek()"></textarea></div>
+    <div class="day-card"><div class="dc-hdr">Wednesday</div><textarea id="w-mer" placeholder="Business slot…" oninput="saveWeek()"></textarea></div>
+    <div class="day-card"><div class="dc-hdr">Thursday</div><textarea id="w-jeu" placeholder="France presentation Zoom 8:30 pm" oninput="saveWeek()"></textarea></div>
+    <div class="day-card"><div class="dc-hdr">Friday</div><textarea id="w-ven" placeholder="Business slot…" oninput="saveWeek()"></textarea></div>
+    <div class="day-card we"><div class="dc-hdr">Saturday</div><textarea id="w-sam" placeholder="Morning Strategy meeting" oninput="saveWeek()"></textarea></div>
+    <div class="day-card we"><div class="dc-hdr">Sunday</div><textarea id="w-dim" placeholder="Rest / family or training" oninput="saveWeek()"></textarea></div>
+  </div>
+  <button class="save-btn" onclick="saveWeek()">💾 Save my typical week</button>
+
+  <div class="slbl">My daily routines</div>
+
+  <p>Successful leaders all have one thing in common: fixed routines. What is decided in advance is no longer negotiated when it is time to act.</p>
+
+  <div class="routine-block">
+    <div class="rb-hdr rb-matin">☀️ Morning routine — Prepare your day</div>
+    <div class="rb-body">
+      <div class="rb-row"><span class="rb-time">When I wake up</span><input class="rb-input" id="rm-1" placeholder="e.g. read my Why and my goals" oninput="saveRoutines()"></div>
+      <div class="rb-row"><span class="rb-time">Focus</span><input class="rb-input" id="rm-2" placeholder="e.g. 15 min — my 3 priorities of the day" oninput="saveRoutines()"></div>
+      <div class="rb-row"><span class="rb-time">Growth</span><input class="rb-input" id="rm-3" placeholder="e.g. 20 min of inspiring reading/listening" oninput="saveRoutines()"></div>
+      <div class="rb-row"><span class="rb-time">Action no. 1</span><input class="rb-input" id="rm-4" placeholder="e.g. identify 3 contacts to follow up today" oninput="saveRoutines()"></div>
+    </div>
+  </div>
+
+  <div class="routine-block">
+    <div class="rb-hdr rb-jour">⚡ During the day — Key actions</div>
+    <div class="rb-body">
+      <div class="rb-row"><span class="rb-time">Prospecting</span><input class="rb-input" id="rj-1" placeholder="e.g. 30 min of calls / messages" oninput="saveRoutines()"></div>
+      <div class="rb-row"><span class="rb-time">CRM follow-up</span><input class="rb-input" id="rj-2" placeholder="e.g. update my contacts" oninput="saveRoutines()"></div>
+      <div class="rb-row"><span class="rb-time">Training</span><input class="rb-input" id="rj-3" placeholder="e.g. watch a ZinzinoPlay video" oninput="saveRoutines()"></div>
+      <div class="rb-row"><span class="rb-time">Sponsor check-in</span><input class="rb-input" id="rj-4" placeholder="e.g. message my sponsor (progress)" oninput="saveRoutines()"></div>
+    </div>
+  </div>
+
+  <div class="routine-block">
+    <div class="rb-hdr rb-soir">🌙 Evening routine — Take stock</div>
+    <div class="rb-body">
+      <div class="rb-row"><span class="rb-time" style="color:rgba(255,255,255,.6)">Review</span><input class="rb-input" id="rs-1" placeholder="e.g. what did I achieve today?" oninput="saveRoutines()" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff;"></div>
+      <div class="rb-row"><span class="rb-time" style="color:rgba(255,255,255,.6)">Tomorrow</span><input class="rb-input" id="rs-2" placeholder="e.g. prepare my 3 priorities for tomorrow" oninput="saveRoutines()" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff;"></div>
+      <div class="rb-row"><span class="rb-time" style="color:rgba(255,255,255,.6)">Reading</span><input class="rb-input" id="rs-3" placeholder="e.g. 10 pages of an inspiring book" oninput="saveRoutines()" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff;"></div>
+    </div>
+  </div>
+  <button class="save-btn" onclick="saveRoutines()">💾 Save my routines</button>
+
+  <div class="slbl">My weekly targets in numbers</div>
+
+  <p>How many actions will you commit to each week? These numbers are your consistency gauge — not perfection, but regularity.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card"><span class="kc-icon">📞</span><span class="kc-label">Contacts / week</span><input type="number" id="kpi-contacts" placeholder="e.g. 10" oninput="saveKpis()"></div>
+    <div class="kpi-card"><span class="kc-icon">📅</span><span class="kc-label">Invitations / week</span><input type="number" id="kpi-invit" placeholder="e.g. 5" oninput="saveKpis()"></div>
+    <div class="kpi-card"><span class="kc-icon">🎤</span><span class="kc-label">Presentations / week</span><input type="number" id="kpi-pres" placeholder="e.g. 2" oninput="saveKpis()"></div>
+    <div class="kpi-card"><span class="kc-icon">🔄</span><span class="kc-label">Follow-ups / week</span><input type="number" id="kpi-suivi" placeholder="e.g. 8" oninput="saveKpis()"></div>
+    <div class="kpi-card"><span class="kc-icon">📚</span><span class="kc-label">Training min. / day</span><input type="number" id="kpi-form" placeholder="e.g. 20" oninput="saveKpis()"></div>
+    <div class="kpi-card"><span class="kc-icon">🤝</span><span class="kc-label">Sponsor check-in / week</span><input type="number" id="kpi-sponsor" placeholder="e.g. 1" oninput="saveKpis()"></div>
+  </div>
+  <button class="save-btn" onclick="saveKpis()">💾 Save my weekly targets</button>
+
+  <div class="loco-card">
+    <h3>🚂 The locomotive metaphor</h3>
+    <p>When it’s standing still, a simple block of wood is enough to stop a locomotive. But once it’s going at 90 km/h, it can smash through a 1.5 m reinforced concrete wall. Your routines are the steam that drives the train. The first weeks feel hard — that’s normal, the locomotive starts slowly. But once you have momentum, nothing can stop you.</p>
+  </div>
+
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have blocked the France Zooms (Tuesday, Thursday, Saturday) in my calendar</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have filled in my typical week with my business slots</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have set my morning, daytime and evening routines</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have set my weekly targets in numbers</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I keep my routines for 7 days in a row before changing them</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: My Product Story</li>
+  </ul>
+
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-1-3.html">← 1.3 My Dreams &amp; Goals</a>
+    <a class="nav-btn nav-btn-next" href="module-1-5.html">1.5 — My Product Story →</a>
+  </div>
+
+</main>
+</div>
+
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>
+ddInit('m1-4');
+
+// Semaine type
+const DAYS = ['lun','mar','mer','jeu','ven','sam','dim'];
+function saveWeek(){const d={};DAYS.forEach(k=>{const el=document.getElementById('w-'+k);if(el)d[k]=el.value;});localStorage.setItem('dd_week',JSON.stringify(d));}
+function loadWeek(){const s=localStorage.getItem('dd_week');if(!s)return;const d=JSON.parse(s);DAYS.forEach(k=>{const el=document.getElementById('w-'+k);if(el&&d[k])el.value=d[k];});}
+
+// Routines
+const RID=['rm-1','rm-2','rm-3','rm-4','rj-1','rj-2','rj-3','rj-4','rs-1','rs-2','rs-3'];
+function saveRoutines(){const d={};RID.forEach(k=>{const el=document.getElementById(k);if(el)d[k]=el.value;});localStorage.setItem('dd_routines',JSON.stringify(d));}
+function loadRoutines(){const s=localStorage.getItem('dd_routines');if(!s)return;const d=JSON.parse(s);RID.forEach(k=>{const el=document.getElementById(k);if(el&&d[k])el.value=d[k];});}
+
+// KPIs
+const KPIS=['contacts','invit','pres','suivi','form','sponsor'];
+function saveKpis(){const d={};KPIS.forEach(k=>{const el=document.getElementById('kpi-'+k);if(el)d[k]=el.value;});localStorage.setItem('dd_kpis',JSON.stringify(d));}
+function loadKpis(){const s=localStorage.getItem('dd_kpis');if(!s)return;const d=JSON.parse(s);KPIS.forEach(k=>{const el=document.getElementById('kpi-'+k);if(el&&d[k])el.value=d[k];});}
+
+loadWeek();loadRoutines();loadKpis();
+</script>
+</body>
+</html>

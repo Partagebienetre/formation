@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>4a — Registration &amp; Status · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+/* Tableau comparatif */
+.comp-table { width:100%; border-collapse:collapse; margin:1.2rem 0 1.5rem; font-family:'Playfair Display',serif; font-size:var(--fs-sm); }
+.comp-table th { background:var(--vm); color:#fff; font-family:'Syne',sans-serif; font-weight:800; font-size:var(--fs-xs); text-transform:uppercase; letter-spacing:.06em; padding:.7rem .9rem; text-align:left; }
+.comp-table th:first-child { background:var(--vm2); }
+.comp-table td { padding:.65rem .9rem; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.55; }
+.comp-table tr:nth-child(even) td { background:var(--vm-pale); }
+.comp-table tr:hover td { background:var(--vm-light); }
+.comp-table td:first-child { font-family:'Syne',sans-serif; font-weight:700; font-size:var(--fs-xs); color:var(--vm); }
+@media(max-width:600px){ .comp-table { font-size:.75rem; } .comp-table td,.comp-table th { padding:.5rem .6rem; } }
+
+/* Étapes INPI */
+.inpi-steps { display:grid; gap:.7rem; margin:1.2rem 0 1.5rem; }
+.inpi-step { display:grid; grid-template-columns:36px 1fr; gap:.85rem; align-items:start; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:.9rem 1.1rem; box-shadow:var(--shadow); }
+.is-num { width:36px; height:36px; background:linear-gradient(135deg,var(--vm),var(--vm2)); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:800; font-size:.85rem; flex-shrink:0; }
+.is-content .is-title { font-family:'Syne',sans-serif; font-weight:700; font-size:.88rem; color:var(--text); margin-bottom:.2rem; }
+.is-content .is-text { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.6; }
+.is-content code { background:var(--vm-light); color:var(--vm); font-size:.78rem; padding:.1rem .4rem; border-radius:4px; font-family:'DM Sans',sans-serif; }
+
+/* Seuils cotisations */
+.seuils-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:.8rem; margin:1.2rem 0 1.5rem; }
+.seuil-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.1rem; box-shadow:var(--shadow); text-align:center; }
+.seuil-n { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:900; color:var(--vm); display:block; }
+.seuil-l { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; display:block; margin:.3rem 0; }
+.seuil-c { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text); }
+
+/* Alerte */
+.alert-box { background:#FEF2F2; border:1px solid #FECACA; border-radius:var(--radius); padding:1rem 1.2rem; margin:1.2rem 0; display:flex; gap:.8rem; align-items:flex-start; }
+.alert-box .alert-icon { font-size:1.3rem; flex-shrink:0; }
+.alert-box .alert-text { font-family:'Playfair Display',serif; font-size:var(--fs-sm); line-height:1.65; color:#991B1B; }
+.alert-box strong { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; text-transform:uppercase; display:block; margin-bottom:.3rem; }
+
+.info-box { background:#EFF6FF; border:1px solid #BFDBFE; border-radius:var(--radius); padding:1rem 1.2rem; margin:1.2rem 0; display:flex; gap:.8rem; align-items:flex-start; }
+.info-box .alert-icon { font-size:1.3rem; flex-shrink:0; }
+.info-box .alert-text { font-family:'Playfair Display',serif; font-size:var(--fs-sm); line-height:1.65; color:#1E40AF; }
+.info-box strong { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; text-transform:uppercase; display:block; margin-bottom:.3rem; color:#1E40AF; }
+</style>
+</head>
+<body>
+
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+
+<div id="sb-overlay"></div>
+<div class="layout">
+
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item active" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🚀 Module 4 · Chapter a</div>
+    <h1>Registration &amp;<br><em>VDI Status (France)</em></h1>
+    <p class="mod-hero-sub">Starting your business legally is simple and quick. In France, the VDI status (Independent Home Seller) was created specifically for you — with very few administrative constraints. Rules differ in each country: check with your sponsor.</p>
+  </div>
+
+  <div class="action-bar">
+    <!-- REMPLACER href="#" par le lien Google Doc du chapitre -->
+    <a class="action-btn primary" href="https://docs.google.com/document/d/1W_TBjBzwoaFqciGm2KDJDJQlu_DvRkpH492-wobWejY/edit?usp=sharing" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m4a',this)">✅ Mark as read</button>
+  </div>
+
+  <div class="slbl">What is the VDI status?</div>
+
+  <p>The Independent Home Seller (VDI) is a legal status created in France in <strong>1993</strong> specifically for direct selling. It lets you run your business as a Zinzino partner fully legally, with minimal paperwork and social contributions that increase progressively with your income.</p>
+
+  <div class="hl"><strong>The good news:</strong> You don’t need to set up a company. The VDI status is automatically managed by FISKA (Zinzino’s service provider), which handles the declarations and payment of your social contributions. Your only obligation: declare the start of your activity to INPI within 15 days.</div>
+
+  <div class="slbl">VDI vs Micro-entrepreneur — the comparison</div>
+
+  <table class="comp-table">
+    <thead>
+      <tr><th>Criterion</th><th>VDI status (Zinzino agent)</th><th>Micro-entrepreneur status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Possible activities</td><td>Specific to direct selling</td><td>Multiple activities possible</td></tr>
+      <tr><td>Type of contract</td><td>Agent (BNC — non-commercial profits)</td><td>Agent (BNC — non-commercial profits)</td></tr>
+      <tr><td>Social security</td><td>General scheme (treated like an employee)</td><td>Self-employed social security</td></tr>
+      <tr><td>Cover</td><td>Health insurance + Pension</td><td>Health insurance + Pension</td></tr>
+      <tr><td>Paperwork</td><td>Very limited — INPI declaration within 15 days</td><td>INPI declaration within 8 days + monthly/quarterly declarations</td></tr>
+      <tr><td>Social contributions</td><td>Progressive by tiers (see below)</td><td>Fixed rate of 25.6% (BNC)</td></tr>
+      <tr><td>Taxation</td><td>Income tax — Micro BNC (34% allowance)</td><td>Micro BNC (34% allowance) or 2.2% flat-rate payment</td></tr>
+      <tr><td>Turnover ceiling</td><td>€3,600/quarter (€1,200/month)</td><td>€77,700/year for services</td></tr>
+      <tr><td>Managing contributions</td><td>FISKA handles everything for you</td><td>You declare and pay URSSAF yourself</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <span class="alert-icon">💡</span>
+    <div class="alert-text"><strong>Recommendation for getting started</strong>The vast majority of new partners in France start under VDI status. It is the simplest, quickest and best suited to getting started. When your turnover approaches the ceiling, you can move on to micro-enterprise status.</div>
+  </div>
+
+  <div class="slbl">VDI contribution thresholds</div>
+
+  <div class="seuils-grid">
+    <div class="seuil-card"><span class="seuil-n">0 €</span><span class="seuil-l">Under €660/quarter</span><div class="seuil-c">Full exemption from social contributions</div></div>
+    <div class="seuil-card"><span class="seuil-n">10 €</span><span class="seuil-l">Tier 1</span><div class="seuil-c">Quarterly flat-rate contribution</div></div>
+    <div class="seuil-card"><span class="seuil-n">20 €</span><span class="seuil-l">Tier 2</span><div class="seuil-c">Quarterly flat-rate contribution</div></div>
+    <div class="seuil-card"><span class="seuil-n">57 €</span><span class="seuil-l">Tier 3</span><div class="seuil-c">Quarterly flat-rate contribution</div></div>
+    <div class="seuil-card"><span class="seuil-n">3 600 €</span><span class="seuil-l">Ceiling/quarter</span><div class="seuil-c">Above that → change status</div></div>
+  </div>
+
+  <div class="slbl">Declaring your activity on the INPI website</div>
+
+  <div class="alert-box">
+    <span class="alert-icon">⚠️</span>
+    <div class="alert-text"><strong>Legal deadline</strong>You have 15 days from the start of your activity to make this declaration. It is a legal obligation. The procedure takes about 20 minutes online.</div>
+  </div>
+
+  <div class="inpi-steps">
+    <div class="inpi-step">
+      <div class="is-num">1</div>
+      <div class="is-content">
+        <div class="is-title">Log in to the INPI website</div>
+        <div class="is-text">Go to <code>inpi.fr</code> → Business formalities. Preferably choose <strong>France Connect+</strong> (via La Poste digital identity or France Identité) — this will simplify future changes and closures, as this method already includes a qualified signature.</div>
+      </div>
+    </div>
+    <div class="inpi-step">
+      <div class="is-num">2</div>
+      <div class="is-content">
+        <div class="is-title">Select “Create a business” → Sole trader</div>
+        <div class="is-text">Choose <strong>Sole trader</strong>. This name is general — it decides which administration your filing is sent to. The questions then become more specific.</div>
+      </div>
+    </div>
+    <div class="inpi-step">
+      <div class="is-num">3</div>
+      <div class="is-content">
+        <div class="is-title">Fill in the business activity details</div>
+        <div class="is-text">
+          Detailed description: <code>Vente à domicile de compléments nutritionnels pour la marque Zinzino sous statut VDI (type it in French, exactly as shown)</code><br><br>
+          Category 1: <code>Commerce et artisanat de détail (retail trade and crafts)</code><br>
+          Category 2: <code>Vente à domicile (home selling)</code><br>
+          Category 3: <code>Mandataire (agent)</code><br>
+          Category 4: <code>Non-inscrit au RCS (not registered with the RCS)</code>
+        </div>
+      </div>
+    </div>
+    <div class="inpi-step">
+      <div class="is-num">4</div>
+      <div class="is-content">
+        <div class="is-title">Tax options — what to select</div>
+        <div class="is-text">
+          Profit taxation scheme: <code>Régime spécial BNC (special BNC scheme)</code><br>
+          VAT scheme: <code>Franchise en base de TVA (VAT exemption)</code><br>
+          Accrual accounting option: <code>No</code><br>
+          VAT liability on taxable operations: <code>No</code>
+        </div>
+      </div>
+    </div>
+    <div class="inpi-step">
+      <div class="is-num">5</div>
+      <div class="is-content">
+        <div class="is-title">Submit and keep the acknowledgement of receipt</div>
+        <div class="is-text">After submitting, you will receive a SIRET number and an acknowledgement of receipt. Keep these documents safe — they prove your legal status. FISKA will then take over automatically through Zinzino.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slbl">Special case — you already have a micro-enterprise</div>
+
+  <div class="mbox">
+    <div class="mt">🔄 Combining VDI + micro-entrepreneur</div>
+    <div class="mtxt">It is entirely possible! If you already have a micro-enterprise for a separate activity, you can add the VDI activity as a secondary activity.<br><br>
+    In that case, go to the INPI e-procedures portal → <strong>Modification</strong> → enter your SIREN number → Etablissements → Ajouter une activité (add an activity).<br><br>
+    Answer <strong>NO</strong> to the questions “Activité principale” and “Activité principale de l’entreprise” (main activity). INPI agents can sometimes be thrown by this case — feel free to call them to confirm the right procedure (the FVD confirmed this approach with the INPI legal department).</div>
+  </div>
+
+  <div class="alert-box">
+    <span class="alert-icon">⚠️</span>
+    <div class="alert-text"><strong>Important if you already have a micro-enterprise</strong>INPI systems sometimes struggle with this multi-activity setup. We recommend contacting Fiska, who can do the filing for you for €20.</div>
+  </div>
+
+  <div class="slbl">Official resources</div>
+
+  <div class="cards-grid">
+    <div class="ccard">
+      <span class="cc-icon">🏛️</span>
+      <div class="cc-title">INPI website</div>
+      <div class="cc-text">inpi.fr → Formalités des entreprises (business formalities). All VDI declarations have been made here since 2023 (one-stop shop).</div>
+    </div>
+    <div class="ccard">
+      <span class="cc-icon">📋</span>
+      <div class="cc-title">FVD — French Direct Selling Federation</div>
+      <div class="cc-text">fvd.fr — The professional organisation representing direct selling in France. Guides and legal documentation available.</div>
+    </div>
+    <div class="ccard">
+      <span class="cc-icon">🏢</span>
+      <div class="cc-title">FISKA — Your social contributions manager</div>
+      <div class="cc-text">FISKA manages your social declarations as a Zinzino VDI. Your contributions are deducted and paid automatically through them.</div>
+    </div>
+    <div class="ccard">
+      <span class="cc-icon">👤</span>
+      <div class="cc-title">Your sponsor</div>
+      <div class="cc-text">Your first point of contact for any practical question. Your sponsor has already been through this process and can guide you step by step on a call.</div>
+    </div>
+  </div>
+
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I understand the difference between VDI status and micro-entrepreneur</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I made my declaration on inpi.fr within 15 days of starting</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I received and kept my SIREN number and acknowledgement of receipt</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I know my quarterly ceiling (€3,600) and the contribution thresholds</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I told my sponsor my declaration is done</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: Membership, Pack &amp; Z4F</li>
+  </ul>
+
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-3e.html">← Module 3 — Library</a>
+    <a class="nav-btn nav-btn-next" href="module-4b.html">4b — Membership, Pack &amp; Z4F →</a>
+  </div>
+
+</main>
+</div>
+
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>ddInit('m4a');</script>
+</body>
+</html>

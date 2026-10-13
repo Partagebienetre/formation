@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>4c — Fast Start · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+/* Timeline Fast Start */
+.fs-timeline { display:grid; gap:1rem; margin:1.5rem 0; position:relative; }
+.fs-timeline::before { content:''; position:absolute; left:28px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,var(--vm),var(--gold)); z-index:0; }
+.fs-step { display:grid; grid-template-columns:60px 1fr; gap:1rem; align-items:start; position:relative; z-index:1; }
+.fs-circle { width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:900; font-size:.85rem; flex-shrink:0; text-align:center; line-height:1.2; border:3px solid white; }
+.fc-30  { background:var(--vm); color:#fff; box-shadow:0 0 0 3px var(--vm); }
+.fc-60  { background:#059669; color:#fff; box-shadow:0 0 0 3px #059669; }
+.fc-90  { background:#D97706; color:#fff; box-shadow:0 0 0 3px #D97706; }
+.fc-120 { background:linear-gradient(135deg,var(--gold),#E8C56A); color:#1E0B40; box-shadow:0 0 0 3px var(--gold); }
+.fs-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.2rem 1.3rem; box-shadow:var(--shadow); }
+.fs-card .fc-tag { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin-bottom:.5rem; display:flex; align-items:center; gap:.5rem; }
+.fs-card .fc-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--text); margin-bottom:.5rem; }
+.fs-card .fc-obj { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.6; margin-bottom:.7rem; }
+.fs-card .fc-reward { background:var(--vm-pale); border:1px solid var(--vm-light); border-radius:8px; padding:.55rem .8rem; font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700; color:var(--vm); }
+
+/* Points tracker */
+.pts-tracker { background:linear-gradient(135deg,#1E0B40,#3B1F7A); border-radius:18px; padding:1.8rem; margin:1.5rem 0; }
+.pts-tracker h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold); margin-bottom:1rem; }
+.pts-row { display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem; }
+@media(max-width:500px){ .pts-row { grid-template-columns:repeat(2,1fr); } }
+.pts-card { background:rgba(255,255,255,.08); border-radius:10px; padding:.85rem .8rem; text-align:center; }
+.pts-n { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:900; color:var(--gold); display:block; }
+.pts-l { font-family:'Syne',sans-serif; font-size:.65rem; font-weight:700; color:rgba(255,255,255,.55); text-transform:uppercase; letter-spacing:.05em; display:block; margin-top:.2rem; }
+
+/* Phase Diamant 90j */
+.phases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.5rem 0; }
+@media(max-width:600px){ .phases-grid { grid-template-columns:1fr; } }
+.phase-card { border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+.ph-hdr { padding:.75rem 1rem; font-family:'Syne',sans-serif; font-weight:800; font-size:.82rem; }
+.ph1 { background:var(--vm); color:#fff; }
+.ph2 { background:#059669; color:#fff; }
+.ph3 { background:linear-gradient(135deg,#1E0B40,#3B1F7A); color:var(--gold); }
+.ph-body { background:var(--card); border:1px solid var(--border); border-top:none; padding:.85rem 1rem; }
+.ph-item { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.55; display:flex; gap:.4rem; margin-bottom:.4rem; }
+.ph-item::before { content:'▸'; color:var(--vm); flex-shrink:0; }
+.ph-obj { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; color:var(--vm); margin-top:.6rem; padding:.4rem .7rem; background:var(--vm-pale); border-radius:6px; }
+
+/* Routine table */
+.routine-tbl { width:100%; border-collapse:collapse; margin:1.2rem 0; font-family:'Playfair Display',serif; font-size:var(--fs-sm); }
+.routine-tbl th { background:var(--vm); color:#fff; font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; text-transform:uppercase; letter-spacing:.05em; padding:.6rem .9rem; text-align:left; }
+.routine-tbl td { padding:.6rem .9rem; border-bottom:1px solid var(--border); vertical-align:top; }
+.routine-tbl tr:nth-child(even) td { background:var(--vm-pale); }
+
+/* Progression table */
+.prog-tbl { width:100%; border-collapse:collapse; margin:1.2rem 0; font-family:'Playfair Display',serif; font-size:var(--fs-sm); }
+.prog-tbl th { background:linear-gradient(135deg,#1E0B40,#3B1F7A); color:var(--gold); font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; text-transform:uppercase; letter-spacing:.05em; padding:.6rem .9rem; text-align:left; }
+.prog-tbl td { padding:.6rem .9rem; border-bottom:1px solid var(--border); vertical-align:top; }
+.prog-tbl tr:nth-child(even) td { background:var(--vm-pale); }
+.prog-tbl td:last-child { font-weight:700; color:var(--vm); font-family:'Syne',sans-serif; font-size:var(--fs-xs); }
+</style>
+</head>
+<body>
+
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+
+<div id="sb-overlay"></div>
+<div class="layout">
+
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item active" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">06</span> Compensation Plan<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-remuneration.html"><span class="sb-item-num">06</span> Compensation Plan<span class="sb-chk" data-id="m06" onclick="ddToggleChk(event,'m06')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🚀 Module 4 · Chapter c</div>
+    <h1>The Programme<br><em>Fast Start</em></h1>
+    <p class="mod-hero-sub">Fast Start is your roadmap for the first 120 days. Each goal reached unlocks concrete rewards and lays the foundations of your business for years to come.</p>
+  </div>
+
+  <!-- Vidéo Hilde -->
+  <div class="video-wrap">
+    <div class="video-label">🎬 Getting-started video with Hilde — watch this first</div>
+    <iframe class="video-iframe" src="https://www.zinzinoplay.com/fr/watch/265" allowfullscreen></iframe>
+  </div>
+
+  <div class="action-bar">
+    <button class="action-btn" onclick="ddMarkDone('m4c',this)">✅ Mark as read</button>
+  </div>
+
+  <div class="slbl">Why the first 120 days are decisive</div>
+
+  <div class="quote-block">
+    <p>“Fast Start is a 4-step path designed to help you lay solid foundations for your Zinzino business.”</p>
+    <cite>— Official Zinzino programme</cite>
+  </div>
+
+  <p>The first 120 days set the trajectory of your business. They are not the hardest — they are the most important. They shape your habits, create your first results and prove to yourself that the model works. <strong>Act now, learn by doing.</strong></p>
+
+  <div class="hl"><strong>Track your progress</strong> in your Back Office → tab <strong>Reporting → Fast Start</strong>. You see your progress on each of the 4 steps in real time.</div>
+
+  <!-- Les 4 étapes -->
+  <div class="slbl">The 4 Fast Start steps</div>
+
+  <div class="fs-timeline">
+
+    <div class="fs-step">
+      <div class="fs-circle fc-30">Q-Team<br>30d</div>
+      <div class="fs-card">
+        <div class="fc-tag" style="color:var(--vm)">⚡ Step 1 — Days 0 to 30</div>
+        <div class="fc-title">Join the Q-Team</div>
+        <div class="fc-obj">
+          <strong>Goal:</strong> 4 customers subscribed to a First Kit (4 PCP and 20 credits).<br><br>
+          This is your top priority from day 1. These 4 customers trigger your free Z4F, validate your model and give you momentum for what comes next.
+        </div>
+        <div class="fc-reward">🎁 One-off 30-day bonus: €100 + 10% Cash Bonus on each kit + free subscription (Z4F)</div>
+      </div>
+    </div>
+
+    <div class="fs-step">
+      <div class="fs-circle fc-60">Enroll 2<br>60d</div>
+      <div class="fs-card">
+        <div class="fc-tag" style="color:#059669">🤝 Step 2 — Days 31 to 60</div>
+        <div class="fc-title">Enrol 2 partners with a kit</div>
+        <div class="fc-obj">
+          <strong>Goal:</strong> 2 new partners enrolled with a kit — one on the left, one on the right of your organisation.<br><br>
+          Help them start their own Fast Start immediately. Their start is your success.
+        </div>
+        <div class="fc-reward">🎁 +€400 network bonus (running total: €500)</div>
+      </div>
+    </div>
+
+    <div class="fs-step">
+      <div class="fs-circle fc-90">Help 2<br>90d</div>
+      <div class="fs-card">
+        <div class="fc-tag" style="color:#D97706">🌱 Step 3 — Days 61 to 90</div>
+        <div class="fc-title">Help your 2 enrol their 2</div>
+        <div class="fc-obj">
+          <strong>Goal:</strong> Help each of your 2 partners enrol 2 new partners — that is 4 more people.<br><br>
+          This is where duplication begins. You learn to train by supporting.
+        </div>
+        <div class="fc-reward">🎁 +€1,200 network bonus (running total: €1,700)</div>
+      </div>
+    </div>
+
+    <div class="fs-step">
+      <div class="fs-circle fc-120">X-Team<br>120d</div>
+      <div class="fs-card">
+        <div class="fc-tag" style="color:var(--gold)">💎 Step 4 — Days 91 to 120</div>
+        <div class="fc-title">Join the X-Team</div>
+        <div class="fc-obj">
+          <strong>Goal:</strong> 10 personal customers (10 PCP / 50 credits).<br><br>
+          The X-Team opens the door to monthly zRewards, the CAB Bonus and the ECB — the bonus that doubles your credits on new orders.
+        </div>
+        <div class="fc-reward">🎁 +€150 network bonus + 50 zRewards + free Z4F for life + ECB activated (estimated total: ~€2,500)</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Récapitulatif -->
+  <div class="pts-tracker">
+    <h3>📊 Complete Fast Start summary</h3>
+    <div class="pts-row">
+      <div class="pts-card"><span class="pts-n">~2 500€</span><span class="pts-l">Estimated earnings if all 4 steps are completed</span></div>
+      <div class="pts-card"><span class="pts-n">10</span><span class="pts-l">Personal customers at 120 days</span></div>
+      <div class="pts-card"><span class="pts-n">50</span><span class="pts-l">Monthly zRewards</span></div>
+      <div class="pts-card"><span class="pts-n">∞</span><span class="pts-l">Free Z4F every month</span></div>
+    </div>
+    <p style="font-family:'Playfair Display',serif;font-size:var(--fs-xs);color:rgba(255,255,255,.45);margin-top:1rem;margin-bottom:0;">⚠️ These figures are estimates based on Ultimate kits. Actual earnings depend on the products ordered and the volume generated.</p>
+  </div>
+
+  <!-- Plan d'action 30 premiers jours -->
+  <div class="slbl">Action plan — The first 30 days, week by week</div>
+
+  <table class="prog-tbl">
+    <thead><tr><th>Week</th><th>Main goal</th><th>Expected result</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Strong start — 10 invitations/day</td><td>3 presentations/day</td></tr>
+      <tr><td>2</td><td>3 customers + 1 partner</td><td>500 points</td></tr>
+      <tr><td>4</td><td>3 active partners (Q-Team reached)</td><td>1,000 points</td></tr>
+      <tr><td>6</td><td>3 duplicated lines</td><td>3,000 points</td></tr>
+      <tr><td>8</td><td>3 leaders trained</td><td>6,000 points</td></tr>
+      <tr><td>12</td><td>Stable, duplicated team (X-Team)</td><td>10,000 points 💎</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Objectif Diamant 90j -->
+  <div class="slbl">💎 For the ambitious — Diamond in 90 days</div>
+
+  <div class="quote-block">
+    <p>“Do every day what most people are not willing to do, and tomorrow you will live as most people cannot.”</p>
+    <cite>— 90-Day Diamond Plan</cite>
+  </div>
+
+  <div class="phases-grid">
+    <div class="phase-card">
+      <div class="ph-hdr ph1">⚡ Phase 1 — Days 1 to 30<br>Massive Launch</div>
+      <div class="ph-body">
+        <div class="ph-item">15 to 20 invitations a day (5C method)</div>
+        <div class="ph-item">2 to 3 presentations a day (Zoom, video, face to face)</div>
+        <div class="ph-item">2 team presentations a week</div>
+        <div class="ph-item">Daily training, 15 to 30 min</div>
+        <div class="ph-item">1 strategy meeting with your sponsor a week</div>
+        <div class="ph-item">Follow up with prospects within 24h</div>
+        <div class="ph-obj">End-of-phase goal: 3 to 5 customers, 3 partners started, 1,000 points</div>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="ph-hdr ph2">🌱 Phase 2 — Days 31 to 60<br>Rapid Duplication</div>
+      <div class="ph-body">
+        <div class="ph-item">Work every day with your partners (coaching, follow-ups)</div>
+        <div class="ph-item">2 Zooms a week: 1 presentation + 1 training</div>
+        <div class="ph-item">2 direct calls with each new partner</div>
+        <div class="ph-item">Follow their Fast Start personally</div>
+        <div class="ph-item">Encourage the first product testimonials</div>
+        <div class="ph-obj">End-of-phase goal: 3 active lines, 20 customers in total, 5,000 team points</div>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="ph-hdr ph3">💎 Phase 3 — Days 61 to 90<br>Consolidation</div>
+      <div class="ph-body">
+        <div class="ph-item">Daily coaching of your 3 leaders (15 min each)</div>
+        <div class="ph-item">Present, or have someone present, every day</div>
+        <div class="ph-item">Analyse the Back Office (volumes, subscriptions)</div>
+        <div class="ph-item">Encourage reading, gratitude and visualisation</div>
+        <div class="ph-item">Enrol 1 more new partner a week</div>
+        <div class="ph-obj">End-of-phase goal: 3 leaders at 3,000 points = 10,000 points in total = Diamond ✅</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Routine quotidienne -->
+  <div class="slbl">The daily Diamond routine</div>
+
+  <table class="routine-tbl">
+    <thead><tr><th>Action</th><th>Goal</th><th>Duration</th></tr></thead>
+    <tbody>
+      <tr><td>Reading / Audio</td><td>Mindset &amp; motivation</td><td>15 min</td></tr>
+      <tr><td>Invitations</td><td>15 to 20 a day</td><td>1h</td></tr>
+      <tr><td>Presentations</td><td>1 to 2 a day</td><td>1h</td></tr>
+      <tr><td>Follow-ups</td><td>Customers &amp; prospects</td><td>30 min</td></tr>
+      <tr><td>Partner coaching</td><td>Duplication</td><td>30 min</td></tr>
+      <tr><td>Gratitude / Visualisation</td><td>Positive energy</td><td>10 min</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Avantages du statut Fast Start -->
+  <div class="slbl">Why Fast Start boosts your whole career</div>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">💶</span><div class="cc-title">Immediate financial bonus</div><div class="cc-text">Extra bonuses are added to your regular commissions as soon as the first steps are validated. Quick action is rewarded financially.</div></div>
+    <div class="ccard"><span class="cc-icon">📈</span><div class="cc-title">Faster progression</div><div class="cc-text">Fast Start propels you towards the first ranks of the Partner plan. Each step unlocks a higher commission level.</div></div>
+    <div class="ccard"><span class="cc-icon">🏆</span><div class="cc-title">Public recognition</div><div class="cc-text">Your results are highlighted at events and in internal communications. Recognition strengthens the motivation of the whole team.</div></div>
+    <div class="ccard"><span class="cc-icon">🔁</span><div class="cc-title">Natural duplication</div><div class="cc-text">Early results attract ambitious people. A strong start creates momentum that makes your next enrolments easier.</div></div>
+  </div>
+
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I watched Hilde’s video at the start of this module</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have read and understood the 4 Fast Start steps and their goals</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I opened my Back Office and found the Reporting → Fast Start tab</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have identified my first 4 customers for the Q-Team</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I planned my actions week by week with my sponsor</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: Rules &amp; Tools</li>
+  </ul>
+
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-4b.html">← 4b Membership &amp; Z4F</a>
+    <a class="nav-btn nav-btn-next" href="module-4d.html">4d — Rules &amp; Tools →</a>
+  </div>
+
+</main>
+</div>
+
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>ddInit('m4c');</script>
+</body>
+</html>

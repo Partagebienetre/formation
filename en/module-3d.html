@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>3d — Objections · Destination 💎</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dd-style.css">
+<style>
+/* Filtres */
+.obj-filters { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0 1.5rem; }
+.ftag { padding:.4rem .9rem; border-radius:20px; border:1.5px solid var(--border); background:var(--card); color:var(--text2); font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700; cursor:pointer; transition:all .18s; }
+.ftag:hover,.ftag.on { background:var(--vm); color:#fff; border-color:var(--vm); }
+
+/* Recherche */
+.obj-search-wrap { position:relative; margin-bottom:1.5rem; }
+.obj-search { width:100%; padding:.75rem 1rem .75rem 2.8rem; border:1.5px solid var(--border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:var(--fs-sm); color:var(--text); background:var(--card); outline:none; transition:border .2s; }
+.obj-search:focus { border-color:var(--vm); }
+.obj-search-icon { position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--text2); font-size:1rem; }
+
+/* Groupes */
+.obj-group { margin-bottom:1.5rem; }
+.obj-group-title { font-family:'Syne',sans-serif; font-weight:800; font-size:.78rem; color:var(--text2); text-transform:uppercase; letter-spacing:.06em; padding:.5rem 0; border-bottom:1px solid var(--border); margin-bottom:.8rem; }
+
+/* Objection card */
+.obj { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:.7rem; overflow:hidden; box-shadow:var(--shadow); transition:box-shadow .2s; }
+.obj:hover { box-shadow:var(--shadow-lg); }
+.obj.hidden { display:none; }
+.obj-hd { display:flex; align-items:center; gap:.8rem; padding:.9rem 1.1rem; cursor:pointer; transition:background .15s; user-select:none; }
+.obj-hd:hover { background:var(--vm-pale); }
+.obj-hd.open { background:var(--vm-pale); }
+.obj-ico { font-size:1.1rem; flex-shrink:0; }
+.obj-q { font-family:'Playfair Display',serif; font-weight:700; font-size:.95rem; color:var(--text); flex:1; line-height:1.4; }
+.obj-cat { font-family:'Syne',sans-serif; font-size:.6rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; padding:.15rem .45rem; border-radius:20px; flex-shrink:0; }
+.cat-temps    { background:#FEF3C7; color:#92400E; }
+.cat-argent   { background:#D1FAE5; color:#065F46; }
+.cat-confiance{ background:#EDE9FE; color:#4C1D95; }
+.cat-competences { background:#DBEAFE; color:#1E40AF; }
+.cat-reseau   { background:#FCE7F3; color:#9D174D; }
+.cat-produit  { background:#FEF9C3; color:#713F12; }
+.obj-arr { color:var(--text2); font-size:.7rem; transition:transform .25s; flex-shrink:0; }
+.obj-hd.open .obj-arr { transform:rotate(180deg); }
+
+.obj-bd { display:none; padding:1.1rem 1.2rem; border-top:1px solid var(--border); }
+.obj-bd.open { display:block; }
+
+.resp-lbl { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:700; color:var(--vm); text-transform:uppercase; letter-spacing:.06em; margin-bottom:.5rem; }
+.resp-box { background:linear-gradient(135deg,#1E0B40,#3B1F7A); border-radius:12px; padding:1.1rem 1.3rem; font-family:'Playfair Display',serif; font-size:var(--fs-base); font-style:italic; color:rgba(255,255,255,.92); line-height:1.75; margin-bottom:.8rem; }
+.recadrage { background:var(--gold-lt); border:1px solid rgba(201,168,76,.25); border-radius:10px; padding:.8rem 1rem; margin-bottom:.7rem; }
+.recadrage strong { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:.3rem; }
+.recadrage p { font-family:'Playfair Display',serif; font-size:var(--fs-sm); line-height:1.6; margin:0; }
+.tip-box { background:var(--vm-pale); border:1px solid var(--vm-light); border-radius:10px; padding:.75rem 1rem; }
+.tip-box strong { font-family:'Syne',sans-serif; font-size:var(--fs-xs); font-weight:800; color:var(--vm); text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:.3rem; }
+.tip-box p { font-family:'Playfair Display',serif; font-size:var(--fs-sm); line-height:1.6; margin:0; }
+
+/* Méthode 4 étapes */
+.etapes-grid { display:grid; gap:.7rem; margin:1.2rem 0; }
+.etape-item { display:grid; grid-template-columns:40px 1fr; gap:.85rem; align-items:start; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:.9rem 1.1rem; box-shadow:var(--shadow); }
+.etape-num { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,var(--vm),var(--vm2)); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:800; font-size:.9rem; flex-shrink:0; }
+.etape-content .et-title { font-family:'Syne',sans-serif; font-weight:700; font-size:.88rem; color:var(--text); margin-bottom:.2rem; }
+.etape-content .et-text { font-family:'Playfair Display',serif; font-size:var(--fs-sm); color:var(--text2); line-height:1.6; }
+
+.no-res { text-align:center; color:var(--text2); padding:2rem; font-family:'Playfair Display',serif; font-style:italic; display:none; }
+</style>
+</head>
+<body>
+
+<script>function ddCheckPw(){var v=document.getElementById("pw-input").value;if(v==="Diamant"){localStorage.setItem("dd_auth","1");document.getElementById("pw-overlay").style.display="none";}else{document.getElementById("pw-err").style.display="block";document.getElementById("pw-input").value="";}}if(localStorage.getItem("dd_auth")==="1"){document.getElementById("pw-overlay").style.display="none";}document.addEventListener("keydown",function(e){if(e.key==="Enter")ddCheckPw();});</script>
+
+<div id="pw-overlay"><div class="pw-box"><span class="pw-gem">💎</span><h1 class="pw-title">Destination Diamant</h1><p class="pw-sub">Partner training — Private area</p><input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off"><button class="pw-btn" id="pw-btn" onclick="ddCheckPw()">Access the training →</button><p class="pw-err" id="pw-err">Incorrect password. Try again.</p></div></div>
+
+<div id="srch-ov"><div id="srch-box"><div class="srch-top"><span class="srch-icon">🔍</span><input type="text" id="srch-input" placeholder="Search the whole training…" oninput="ddDoSearch(this.value)" autocomplete="off"><button class="srch-close" onclick="ddCloseSrch()">✕</button></div><div id="srch-results"><div class="srch-hint">Type a keyword to search all modules</div></div></div></div>
+
+<header>
+  <button class="hdr-menu-btn" onclick="ddToggleSidebar()"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <a class="hdr-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="hdr-spacer"></div>
+  <button class="hdr-btn" id="audio-btn" onclick="ddToggleAudio()">🔊 Listen</button>
+  <button class="hdr-btn" onclick="ddOpenSrch()">🔍 Search</button>
+</header>
+
+<div id="sb-overlay"></div>
+<div class="layout">
+
+<aside id="sidebar">
+  <a class="sb-logo" href="index.html">Destination <span>💎</span></a>
+  <div class="sb-progress-label" id="sb-pct-label">0% complete</div>
+  <div class="sb-progress"><div class="sb-progress-fill" id="sb-pfill" style="width:0%"></div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">01</span> Welcome — My Foundations<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-1-1.html"><span class="sb-item-num">1.1</span> My Commitment &amp; My Decision<span class="sb-chk" data-id="m1-1" onclick="ddToggleChk(event,'m1-1')"></span></a>
+    <a class="sb-item" href="module-1-2.html"><span class="sb-item-num">1.2</span> My Why<span class="sb-chk" data-id="m1-2" onclick="ddToggleChk(event,'m1-2')"></span></a>
+    <a class="sb-item" href="module-1-3.html"><span class="sb-item-num">1.3</span> My Dreams &amp; SMART Goals<span class="sb-chk" data-id="m1-3" onclick="ddToggleChk(event,'m1-3')"></span></a>
+    <a class="sb-item" href="module-1-4.html"><span class="sb-item-num">1.4</span> My Planning &amp; Schedule<span class="sb-chk" data-id="m1-4" onclick="ddToggleChk(event,'m1-4')"></span></a>
+    <a class="sb-item" href="module-1-5.html"><span class="sb-item-num">1.5</span> My Product Story<span class="sb-chk" data-id="m1-5" onclick="ddToggleChk(event,'m1-5')"></span></a>
+    <a class="sb-item" href="module-1-6.html"><span class="sb-item-num">1.6</span> The Company Story<span class="sb-chk" data-id="m1-6" onclick="ddToggleChk(event,'m1-6')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">02</span> The 33 Mistakes<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-2.html"><span class="sb-item-num">2</span> The 33 mistakes to avoid<span class="sb-chk" data-id="m2" onclick="ddToggleChk(event,'m2')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr open" onclick="ddToggleGroup(this)"><span class="sb-mod-num">03</span> Organic Prospecting<span class="sb-arrow">▶</span></div><div class="sb-items open">
+    <a class="sb-item" href="module-3a.html"><span class="sb-item-num">3a</span> The Names List<span class="sb-chk" data-id="m3a" onclick="ddToggleChk(event,'m3a')"></span></a>
+    <a class="sb-item" href="module-3b.html"><span class="sb-item-num">3b</span> Edification<span class="sb-chk" data-id="m3b" onclick="ddToggleChk(event,'m3b')"></span></a>
+    <a class="sb-item" href="module-3c.html"><span class="sb-item-num">3c</span> The Invitation<span class="sb-chk" data-id="m3c" onclick="ddToggleChk(event,'m3c')"></span></a>
+    <a class="sb-item active" href="module-3d.html"><span class="sb-item-num">3d</span> Objections<span class="sb-chk" data-id="m3d" onclick="ddToggleChk(event,'m3d')"></span></a>
+    <a class="sb-item" href="module-3e.html"><span class="sb-item-num">3e</span> Library &amp; Network Marketing Culture<span class="sb-chk" data-id="m3e" onclick="ddToggleChk(event,'m3e')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">04</span> Getting Started<span class="sb-arrow">▶</span></div><div class="sb-items">
+    <a class="sb-item" href="module-4a.html"><span class="sb-item-num">4a</span> Registration &amp; Status<span class="sb-chk" data-id="m4a" onclick="ddToggleChk(event,'m4a')"></span></a>
+    <a class="sb-item" href="module-4b.html"><span class="sb-item-num">4b</span> Membership, Pack &amp; Z4F<span class="sb-chk" data-id="m4b" onclick="ddToggleChk(event,'m4b')"></span></a>
+    <a class="sb-item" href="module-4c.html"><span class="sb-item-num">4c</span> Fast Start<span class="sb-chk" data-id="m4c" onclick="ddToggleChk(event,'m4c')"></span></a>
+    <a class="sb-item" href="module-4d.html"><span class="sb-item-num">4d</span> Rules &amp; Tools<span class="sb-chk" data-id="m4d" onclick="ddToggleChk(event,'m4d')"></span></a>
+    <a class="sb-item" href="module-4e.html"><span class="sb-item-num">4e</span> Launch<span class="sb-chk" data-id="m4e" onclick="ddToggleChk(event,'m4e')"></span></a>
+    <a class="sb-item" href="module-4f.html"><span class="sb-item-num">4f</span> Events<span class="sb-chk" data-id="m4f" onclick="ddToggleChk(event,'m4f')"></span></a>
+  </div></div>
+  <div class="sb-group"><div class="sb-group-hdr" onclick="ddToggleGroup(this)"><span class="sb-mod-num">4★</span> Tools<span class="sb-arrow">▶</span></div><div class="sb-items"><a class="sb-item" href="module-4bis.html"><span class="sb-item-num">4★</span> My Tools &amp; Resources<span class="sb-chk" data-id="m4bis" onclick="ddToggleChk(event,'m4bis')"></span></a></div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">05</span> Presentation &amp; Closing</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">06</span> Compensation Plan</div></div>
+  <div class="sb-group"><div class="sb-group-hdr coming"><span class="sb-mod-num">07</span> Social Media Prospecting</div></div>
+</aside>
+
+<main id="main-content">
+
+  <div class="mod-hero">
+    <div class="mod-hero-badge">🎯 Module 3 · Chapter d</div>
+    <h1>The <em>Objections</em></h1>
+    <p class="mod-hero-sub">An objection isn’t a refusal. It’s your prospect telling you: “Guide me better than I can guide myself.” Be glad to receive them.</p>
+  </div>
+
+  <div class="video-wrap">
+    <div class="video-label">🎬 Chapter video</div>
+    <!-- REMPLACER par : <iframe class="video-iframe" src="https://www.youtube.com/embed/XXXXXXXX" allowfullscreen></iframe> -->
+    <div class="video-placeholder"><span class="vp-icon">▶️</span><span class="vp-txt">Video coming soon — replace this block with a YouTube iframe</span></div>
+  </div>
+
+  <div class="action-bar">
+    <!-- REMPLACER href="#" par le lien Google Doc du chapitre -->
+    <a class="action-btn primary" href="#" target="_blank">📥 Download the document</a>
+    <button class="action-btn" onclick="ddMarkDone('m3d',this)">✅ Mark as read</button>
+  </div>
+
+  <!-- État d'esprit -->
+  <div class="slbl">The right mindset for objections</div>
+
+  <div class="quote-block">
+    <p>“An objection isn’t a refusal. It’s your prospect telling you: guide me better than I can guide myself.”</p>
+    <cite>— Fundamental principle of network marketing</cite>
+  </div>
+
+  <p>Objections are often <strong>fears in disguise</strong> : fear of making a mistake, fear of what others think, fear of failing again, fear of not being good enough. Your role isn’t to counter — it’s to reassure. That makes all the difference.</p>
+
+  <div class="cards-grid">
+    <div class="ccard"><span class="cc-icon">🛡️</span><div class="cc-title">The smokescreen objection</div><div class="cc-text">The first reason often isn’t the real one. “I don’t have time” can hide “I don’t trust this”. Dig deeper with: <em>“What is really holding you back?”</em></div></div>
+    <div class="ccard"><span class="cc-icon">💡</span><div class="cc-title">The information objection</div><div class="cc-text">The prospect lacks information. They need to be better informed, not forced into agreement. Give them the right information at the right time.</div></div>
+    <div class="ccard"><span class="cc-icon">🚧</span><div class="cc-title">The condition objection</div><div class="cc-text">A genuine practical or financial obstacle. It deserves a creative, empathetic answer — not a sales pitch.</div></div>
+    <div class="ccard"><span class="cc-icon">🎯</span><div class="cc-title">The interviewer’s posture</div><div class="cc-text">You are selecting, not begging. “Whether you’re interested or not doesn’t bother me.” This inner posture changes everything.</div></div>
+  </div>
+
+  <!-- Méthode 4 étapes -->
+  <div class="slbl">The 4-step method</div>
+
+  <div class="etapes-grid">
+    <div class="etape-item">
+      <div class="etape-num">1</div>
+      <div class="etape-content">
+        <div class="et-title">Listen without interrupting</div>
+        <div class="et-text">Let your prospect finish completely. Nod. Don’t look for the answer while they are talking. Active listening is already an answer in itself.</div>
+      </div>
+    </div>
+    <div class="etape-item">
+      <div class="etape-num">2</div>
+      <div class="etape-content">
+        <div class="et-title">Rephrase and validate</div>
+        <div class="et-text">“If I understand you correctly, what concerns you is…” — Rephrasing shows you have listened. It builds a bridge of trust before any answer.</div>
+      </div>
+    </div>
+    <div class="etape-item">
+      <div class="etape-num">3</div>
+      <div class="etape-content">
+        <div class="et-title">Sincere empathy — share your own experience</div>
+        <div class="et-text">“I understand how you feel, because I had that worry too…” — You were in their place. That sincerity is the only bridge that really works.</div>
+      </div>
+    </div>
+    <div class="etape-item" style="border:2px solid var(--gold);">
+      <div class="etape-num" style="background:linear-gradient(135deg,var(--gold),#E8C56A);color:#1E0B40;">4</div>
+      <div class="etape-content">
+        <div class="et-title">💎 Answer + validate</div>
+        <div class="et-text">“…Then I looked into it, as you are doing now, and I realised that…” — Always finish by validating: “Does everything seem clearer now?”</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recherche + filtres -->
+  <div class="slbl">The objection library</div>
+
+  <div class="obj-search-wrap">
+    <span class="obj-search-icon">🔍</span>
+    <input type="text" class="obj-search" id="obj-search" placeholder="Search for an objection…" oninput="filterObjSearch(this.value)">
+  </div>
+
+  <div class="obj-filters">
+    <button class="ftag on" onclick="filterCat('all',this)">All</button>
+    <button class="ftag" onclick="filterCat('classiques',this)">⭐ The 7 classics</button>
+    <button class="ftag" onclick="filterCat('temps',this)">⏱ Time</button>
+    <button class="ftag" onclick="filterCat('argent',this)">💶 Money</button>
+    <button class="ftag" onclick="filterCat('confiance',this)">🔐 Trust</button>
+    <button class="ftag" onclick="filterCat('competences',this)">🎓 Skills</button>
+    <button class="ftag" onclick="filterCat('reseau',this)">👥 Network</button>
+    <button class="ftag" onclick="filterCat('produit',this)">🧪 Product</button>
+  </div>
+
+  <div class="no-res" id="no-res">No objection found for this search.</div>
+
+  <!-- ⭐ LES 7 CLASSIQUES -->
+  <div class="obj-group" data-cat="classiques">
+    <div class="obj-group-title">⭐ The 7 classic objections — Reference answers</div>
+
+    <div class="obj" data-cat="classiques temps" data-search="temps occupé chargé pas le temps">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">⏱</span><span class="obj-q">“I don’t have time”</span><span class="obj-cat cat-temps">Time</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Reference answer</div>
+        <div class="resp-box">“I understand what you’re saying, because when this project was presented to me I was already very busy too! Then I looked into exactly how it works and realised that the leverage offered by relationship marketing actually solved my problem. With very little of my time, just what I need to invite a few people, plus the work of my sponsor and my support line, I’ve managed to build an extra income that some months already exceeds my main income!”</div>
+        <div class="recadrage"><strong>🔄 Oslo 2025 reframe</strong><p>❌ “It doesn’t take long” → ✅ “I understand, it’s precisely because your time is limited that you need something flexible that delivers results. Let me show you how.”</p></div>
+        <div class="tip-box"><strong>⚡ The key point</strong><p>Leverage is at the heart of the answer. You multiply your time thanks to the team — that’s the very principle of the model.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="classiques reseau" data-search="connais personne réseau contacts amis entourage">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">👥</span><span class="obj-q">“I don’t know anyone”</span><span class="obj-cat cat-reseau">Network</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Reference answer</div>
+        <div class="resp-box">“I understand, because when I discovered this project I had that worry too. Then I realised that two people are enough to start my team, and they don’t need to be close friends. What matters is teamwork and my own partners’ contacts. When I understood that, I made my decision and today I’m delighted! I’m offering you exactly that: a way to multiply your time!”</div>
+        <div class="recadrage"><strong>🔄 Oslo 2025 reframe</strong><p>❌ “You need to know lots of people” → ✅ “Most people start without a network. That’s why we teach you step by step how to make new connections.”</p></div>
+        <div class="tip-box"><strong>⚡ The key point</strong><p>Two people are enough. The power also comes from your partners’ networks, not only yours. That’s the network effect.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="classiques confiance" data-search="pyramidal MLM arnaque escroquerie illégal système pyramide">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">🔺</span><span class="obj-q">“It’s a pyramid scheme”</span><span class="obj-cat cat-confiance">Trust</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Reference answer</div>
+        <div class="resp-box">“I understand how you feel, because that’s what I thought at first too. Then I looked into it, as you are doing now. I understood that every human organisation has a pyramid shape: a family, a company, the state. An illegal pyramid scheme is a scam where the money comes only from high sign-up fees, with no real product. At Zinzino, 100% of income comes from the consumption of real, scientifically tested products. Relationship marketing has been legally regulated in France since 1993 (VDI status).”</div>
+        <div class="recadrage"><strong>🔄 Oslo 2025 reframe</strong><p>❌ “No, it’s not a pyramid” → ✅ “We work with science-based products that give measurable results, within a regulated framework that rewards recommendation — just as Netflix pays influencers to share its brand.”</p></div>
+        <div class="tip-box"><strong>⚡ The key point</strong><p>Don’t defend yourself. Educate. The legal distinction is simple and clear: pyramid scheme = a scam with no product. Relationship marketing = legal distribution with real products.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="classiques competences" data-search="vendre vente commercial aime pas vendeur">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">🎓</span><span class="obj-q">“I don’t like selling”</span><span class="obj-cat cat-competences">Skills</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Reference answer</div>
+        <div class="resp-box">“I completely understand, because I don’t like selling either! I had the same fears when this project was presented to me. Then I was told that salespeople generally don’t do well in this business, because people don’t like feeling they’re being sold to. Our goal is to recommend, to make known the products we love and use ourselves. I simply do what I’ve always done: recommend what I like. People love buying a product as soon as they’re convinced it can be useful to them.”</div>
+        <div class="recadrage"><strong>🔄 Oslo 2025 reframe</strong><p>❌ “It’s easy, you just recommend” → ✅ “It’s not about selling, but about sharing solutions and letting people measure their own results with the test.”</p></div>
+        <div class="tip-box"><strong>⚡ The key point</strong><p>The BalanceTest is your best salesperson. The results speak for themselves — you don’t have to convince, just show.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="classiques competences" data-search="compétences qualifications connaissances capable pas doué expert">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">🎓</span><span class="obj-q">“I don’t have the skills”</span><span class="obj-cat cat-competences">Skills</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Reference answer</div>
+        <div class="resp-box">“I completely understand, because I didn’t feel qualified at the start either. Then I realised that skills are learned — nobody is born with them. What matters is the will to learn and the team’s support. You’ll have a sponsor, full training and ready-to-use tools. The learning curve is normal and you’re supported at every step.”</div>
+        <div class="recadrage"><strong>🔄 Oslo 2025 reframe</strong><p>❌ “You don’t need to be an expert” → ✅ “You can rely on ready-made tools, tests and scientific studies, step by step. You don’t need to know everything — you need to know where to look.”</p></div>
+        <div class="tip-box"><strong>⚡ The key point</strong><p>The system is duplicable. Your role isn’t to be a nutrition expert — it’s to be an expert in human connection.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="classiques argent" data-search="cher trop cher prix coût investissement budget argent pas les moyens">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">💶</span><span class="obj-q">“It’s too expensive”</span><span class="obj-cat cat-argent">Money</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Reference answer</div>
+        <div class="resp-box">“I understand it’s an investment. But let me ask you a question: how much is your less-than-optimal health costing you right now — in lost energy, medication, days when you don’t feel your best? The price is what you pay. The cost is what you lose by not acting. The BalanceTest will give you an objective, measured answer about your real situation before you spend anything.”</div>
+        <div class="recadrage"><strong>🔄 Price vs cost</strong><p>The price is one-off and known. The cost of non-optimised health is invisible but real and ongoing. Make this distinction in your answer.</p></div>
+        <div class="tip-box"><strong>⚡ The key point</strong><p>Never defend the price. Defend the value. The blood test is objective proof that the product is needed — before you even start.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="classiques argent" data-search="combien gagner revenus salaire commission argent rapporter">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">💰</span><span class="obj-q">“Can you really make money?”</span><span class="obj-cat cat-argent">Money</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Reference answer</div>
+        <div class="resp-box">“That’s the right question to ask. Income depends directly on the time you invest and your consistency. It isn’t getting rich quick — it’s building step by step. The first months are for learning the system and laying the foundations. After that, income becomes recurring and grows. The compensation plan is transparent, verifiable and the company is listed on the stock market — everything is public.”</div>
+        <div class="tip-box"><strong>⚡ The key point</strong><p>Be honest about timescales. Promising quick money destroys your credibility. Promising a solid, gradual system strengthens it.</p></div>
+      </div>
+    </div>
+
+  </div><!-- fin classiques -->
+
+  <!-- AUTRES OBJECTIONS -->
+  <div class="obj-group" data-cat="confiance">
+    <div class="obj-group-title">🔐 Trust &amp; Legitimacy</div>
+
+    <div class="obj" data-cat="confiance" data-search="sérieux arnaque fiable entreprise vraie ça marche vraiment">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">🏢</span><span class="obj-q">“Is this serious?”</span><span class="obj-cat cat-confiance">Trust</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Answer</div>
+        <div class="resp-box">“It’s completely legitimate to ask. Zinzino was founded in 2005 and is listed on Nasdaq First North in Stockholm — its accounts are public and anyone can check them. It operates in more than 100 countries with more than 40,000 partners. The laboratory that analyses the tests is the Vitas laboratory, completely independent of Zinzino. That independence is the strongest proof of transparency there is.”</div>
+        <div class="tip-box"><strong>⚡ Your rock-solid arguments</strong><p>Nasdaq listing · Independent Vitas lab · 20 years in business · 100+ countries · 1.4 million tests completed · Scientific study published on ResearchGate.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="confiance" data-search="déjà essayé MLM marketing réseau avant mauvaise expérience">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">😔</span><span class="obj-q">“I’ve already tried network marketing”</span><span class="obj-cat cat-confiance">Trust</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Answer</div>
+        <div class="resp-box">“I completely understand — and that past experience is valuable. What I discovered at Zinzino is something structurally different: a product you prove with a blood test before you even invite anyone. The prospect sees the data themselves — you don’t have to convince them. That objective proof changes everything in the approach and in customer retention rates.”</div>
+        <div class="tip-box"><strong>⚡ The key difference</strong><p>Most negative experiences come from systems with no product proof. Here, the blood test is the proof. Customers convince themselves.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="obj-group" data-cat="temps">
+    <div class="obj-group-title">⏱ Time &amp; Organisation</div>
+
+    <div class="obj" data-cat="temps" data-search="attendre réfléchir décision pas maintenant plus tard">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">⏳</span><span class="obj-q">“I’ll think about it”</span><span class="obj-cat cat-temps">Time</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Answer</div>
+        <div class="resp-box">“Of course, it’s normal to take your time. What exactly do you feel you need to think about? It would help me give you the right information.”</div>
+        <div class="tip-box"><strong>⚡ Why this question</strong><p>“I’ll think about it” is almost always a hidden objection. By asking “about what?”, you find the real resistance and can truly answer it. Then suggest a precise date to call back.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="temps" data-search="moment pas bon timing période difficile occupée chargée">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">📅</span><span class="obj-q">“It’s not the right time”</span><span class="obj-cat cat-temps">Time</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Answer</div>
+        <div class="resp-box">“I completely understand. When do you think would be the right time for you?”<br><br>[After the answer]: “Perfect. I’ll get back in touch then. May I put [date] in my diary to call you back?”</div>
+        <div class="tip-box"><strong>⚡ Always finish with a date</strong><p>Without a precise call-back date, the conversation is over. With a date, it’s on pause. The difference is huge in the long run.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="obj-group" data-cat="produit">
+    <div class="obj-group-title">🧪 Product &amp; Health</div>
+
+    <div class="obj" data-cat="produit" data-search="déjà compléments oméga vitamines produits santé mange bien mange sain">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">🥗</span><span class="obj-q">“I already eat healthily, I don’t need it”</span><span class="obj-cat cat-produit">Story</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Answer</div>
+        <div class="resp-box">“That’s exactly what I thought too! And that’s why I was surprised by my test result — I was careful about what I ate. The test doesn’t measure what you eat, it measures what your cells have actually absorbed and used. 97% of people tested are out of balance, even those who eat healthily. The test will give you an objective answer about your real situation.”</div>
+        <div class="tip-box"><strong>⚡ The key figure</strong><p>97% of people tested have an Omega-6/Omega-3 imbalance. Even people who are careful. This figure, from 1.4 million tests, is your most powerful argument.</p></div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="produit" data-search="médecin docteur avis médical scientifique preuves études">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">👨‍⚕️</span><span class="obj-q">“My doctor doesn’t know about this”</span><span class="obj-cat cat-produit">Story</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Answer</div>
+        <div class="resp-box">“That’s completely normal — doctors are trained to treat diseases, rarely in cellular nutritional prevention. Yet research on Omega-3 and O6/O3 ratios is well documented scientifically — more than 30,000 published studies. Zinzino’s study of 500,000 tests was published on ResearchGate. If your doctor is open-minded, share this data with them — some are very interested.”</div>
+        <div class="tip-box"><strong>⚡ Never criticise the doctor</strong><p>Position yourself as complementary to medicine, never in opposition. The test-based approach is preventive, not curative.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="obj-group" data-cat="competences">
+    <div class="obj-group-title">🎓 Specific skills by profile</div>
+
+    <div class="obj" data-cat="competences" data-search="maman enfants famille temps maison">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">👨‍👩‍👧</span><span class="obj-q">Parent profile — “I don’t have time with the children”</span><span class="obj-cat cat-competences">Profile</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Oslo 2025 reframe</div>
+        <div class="resp-box">“It’s a business you can build around your family, while the children are asleep or at school. No office, no imposed hours, no commuting. You choose your time slots.”</div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="competences" data-search="étudiant jeune pas d'expérience débutant">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">🎓</span><span class="obj-q">Student profile — “I’m too young / no experience”</span><span class="obj-cat cat-competences">Profile</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Oslo 2025 reframe</div>
+        <div class="resp-box">“It’s a source of income you can build during your studies, without being limited by an hourly wage. And you gain communication, leadership and entrepreneurial skills that employers are fighting over.”</div>
+      </div>
+    </div>
+
+    <div class="obj" data-cat="competences" data-search="entrepreneur indépendant déjà chef entreprise activité propre business">
+      <div class="obj-hd" onclick="toggleObj(this)"><span class="obj-ico">🏢</span><span class="obj-q">Entrepreneur profile — “I already have my own business”</span><span class="obj-cat cat-competences">Profile</span><span class="obj-arr">▾</span></div>
+      <div class="obj-bd">
+        <div class="resp-lbl">Oslo 2025 reframe</div>
+        <div class="resp-box">“It’s a modern, global, scalable e-commerce income source, designed to fit into your current business without extra risk. It’s like adding a proven tool: the Balance test brings measurable results, loyal long-term customers and extra income without increasing your workload.”</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Actions -->
+  <div class="slbl">My actions</div>
+  <ul class="checklist">
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I know the 4-step method for handling an objection</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have read and memorised the 7 classic objections and their answers</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have practised each answer out loud, phrasing it with my own testimony</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I have done a role play with my sponsor on the most common objections</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I can identify the type of objection (smokescreen, information, condition)</li>
+    <li onclick="ddToggleCl(this)"><div class="cl-box"></div>I am ready for the next chapter: Library &amp; Network Marketing Culture</li>
+  </ul>
+
+  <div class="nav-btns">
+    <a class="nav-btn nav-btn-prev" href="module-3c.html">← 3c The Invitation</a>
+    <a class="nav-btn nav-btn-next" href="module-3e.html">3e — Library &amp; Network Marketing Culture →</a>
+  </div>
+
+</main>
+</div>
+
+<script src="search-index.js"></script>
+<script src="dd-app.js"></script>
+<script>
+ddInit('m3d');
+
+function toggleObj(hd) {
+  hd.classList.toggle('open');
+  hd.nextElementSibling.classList.toggle('open');
+}
+
+let currentCat = 'all';
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.ftag').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  currentCat = cat;
+  applyFilters();
+}
+
+function filterObjSearch(q) {
+  applyFilters(q);
+}
+
+function applyFilters(q) {
+  q = (q || document.getElementById('obj-search').value).toLowerCase().trim();
+  let visible = 0;
+  document.querySelectorAll('.obj').forEach(obj => {
+    const cats = (obj.dataset.cat || '').toLowerCase();
+    const search = (obj.dataset.search || '') + ' ' + obj.querySelector('.obj-q').textContent;
+    const catMatch = currentCat === 'all' || cats.includes(currentCat);
+    const qMatch = !q || search.toLowerCase().includes(q);
+    if (catMatch && qMatch) { obj.classList.remove('hidden'); visible++; }
+    else obj.classList.add('hidden');
+  });
+  // Gérer visibilité des groupes
+  document.querySelectorAll('.obj-group').forEach(g => {
+    const hasCatMatch = currentCat === 'all' || (g.dataset.cat || '').includes(currentCat);
+    const hasVisible = g.querySelectorAll('.obj:not(.hidden)').length > 0;
+    g.style.display = (hasCatMatch || hasVisible) && hasVisible ? '' : 'none';
+  });
+  document.getElementById('no-res').style.display = visible === 0 ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
